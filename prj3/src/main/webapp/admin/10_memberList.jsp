@@ -122,7 +122,7 @@
 		<td>song</td>
 		<td>송준희</td>
 		<td>2021.05.03</td>
-		<td><a href = "http://localhost/prj3/jspFiles/11_memberManage.jsp">
+		<td><a href = "http://localhost/prj3/admin/11_memberManage.jsp">
 		<input type = "button" value = "수정" class = "btn btn-primary" ></a></td>
 	</tr>
 		</table>

@@ -14,20 +14,20 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../common/sidebar/css/styles.css" rel="stylesheet" />
 	<!-- Custom fonts for this template-->
-    <link href="http://localhost/prj3/common/startbootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost/team_prj3/common/startbootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
 	<!-- bootstrap -->
-	<link href="http://localhost/prj3/common/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://localhost/team_prj3/common/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
 	
 	<!-- jQuery CDN(Contents Delivery Network) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	 <!-- bootstrap -->
-	<script src="http://localhost/prj3/common/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+	<script src="http://localhost/team_prj3/common/bootstrap-3.3.2/js/bootstrap.min.js"></script>
 	<!-- style CSS -->
-	<link href="http://localhost/prj3/common/css/admin_style.css" rel="stylesheet" type="text/css">
+	<link href="http://localhost/team_prj3/common/css/admin_style.css" rel="stylesheet" type="text/css">
 	
 	<!-- summernote -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -37,9 +37,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	
 	<!-- style CSS -->
-	<link href="http://localhost/prj3/common/css/admin_style.css" rel="stylesheet" type="text/css">
-	<link href = "http://localhost/prj3/common/startbootstrap/css/sb-admin-2.css" rel="stylesheet">
-	<link href = "http://localhost/prj3/common/startbootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+	<link href="http://localhost/team_prj3/common/css/admin_style.css" rel="stylesheet" type="text/css">
+	<link href = "http://localhost/team_prj3/common/startbootstrap/css/sb-admin-2.css" rel="stylesheet">
+	<link href = "http://localhost/team_prj3/common/startbootstrap/css/sb-admin-2.min.css" rel="stylesheet">
 <style type = "text/css">
 
 </style>

@@ -66,8 +66,8 @@
 	</div>
 	
 	<div class = "right_bar">
-		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 10px;">관광관리</h1></div>
-		<div><a href = "http://localhost/prj3/jspFiles/05_newWrite.jsp"/> 
+		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 10px;">투어관리</h1></div>
+		<div><a href = "http://localhost/prj3/admin/09_newTour.jsp"/> 
 		<input type="button"  value = "새 투어 등록" id = "newWrite" class = "btn btn-default"/></a></div>
 		
 		<div class = "table">

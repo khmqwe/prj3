@@ -87,10 +87,16 @@ h4{
 	font-size: 15px;
 	width : 700px;
 	margin : auto ;
+	height : 150px;
+}
+
+.row{
+	height : 500px; 
+	width : 500px;
 }
 #contents_04{
 	width : 900px; 
-	height : 1050px;
+	height : 1250px;
 	background-color: #dfdfdf;
 	margin : auto;
 	border-radius: 15px;
@@ -98,7 +104,7 @@ h4{
 }
 #contents_05{
 	width : 1200px; 
-	height : 1150px;
+	height : 1400px;
 	background-color: rgb(240, 240, 240);
 	margin : auto;
 	border-radius: 15px;
@@ -113,11 +119,18 @@ h4{
 }
 #contents_08{
 	width : 900px; 
-	height : 960px;
+	height : 1100px;
 	background-color: #dfdfdf;
 	margin : auto;
 	border-radius: 15px;
 	color : #000000;
+}
+#contents_09{
+	width : 1200px; 
+	height : 1150px;
+	background-color: rgb(240, 240, 240);
+	margin : auto;
+	border-radius: 15px;
 }
 #contents_11{
 	width : 900px; 
@@ -231,7 +244,6 @@ span {
 	float : left; 
 	height : 400px; 
 	width : 500px;
-	background-color: #dfdfdf;
 }
 
 .box {
@@ -274,11 +286,13 @@ nav {
 }
 .card{
 	width : 180px; 
-	height : 100px; 
+	height : 120px; 
 	background-color: #dfdfdf;
 	font-size: 15px;
 }
-
+#summernote{
+	margin-left: 30px;
+}
 .main{
 	width : 1200px;
 }

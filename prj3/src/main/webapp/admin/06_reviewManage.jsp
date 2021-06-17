@@ -91,7 +91,7 @@
             <div class="card shadow mb-4" id= "review_content">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style = "font-size: 15px; float : left">송준희</h6>
-                   <a href = "http://localhost:11856/team_prj3/jspFiles/13_reviewRemove.jsp">
+                   <a href = "http://localhost/prj3/admin/13_reviewRemove.jsp">
                    <input type = "button" class = "btn btn-primary" value = "삭제" style = "font-size: 13px; height : 24px; float : right;"></a>
                 </div>
                 <div class="card-body">
@@ -106,7 +106,7 @@
             <div class="card shadow mb-4" id= "review_content">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style = "font-size: 15px; float : left">송준희</h6>
-                     <a href = "http://localhost:11856/team_prj3/jspFiles/13_reviewRemove.jsp">
+                     <a href = "http://localhost/prj3/admin/13_reviewRemove.jsp">
                      <input type = "button" class = "btn btn-primary" value = "삭제" style = "font-size: 13px; height : 24px; margin-bottom:5px; float : right;"></a>
                 </div>
                 <div class="card-body">
@@ -118,7 +118,7 @@
             <div class="card shadow mb-4" id= "review_content">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style = "font-size: 15px; float : left">송준희</h6>
-                    <a href = "http://localhost:11856/team_prj3/jspFiles/13_reviewRemove.jsp">
+                    <a href = "http://localhost/prj3/admin/13_reviewRemove.jsp">
                      <input type = "button" class = "btn btn-primary" value = "삭제" style = "font-size: 13px; height : 24px; float : right;"></a>
                 </div>
                 <div class="card-body">
@@ -130,7 +130,7 @@
             <div class="card shadow mb-4" id= "review_content">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style = "font-size: 15px; float : left">송준희</h6>
-                     <a href = "http://localhost:11856/team_prj3/jspFiles/13_reviewRemove.jsp">
+                     <a href = "http://localhost/prj3/admin/13_reviewRemove.jsp">
                      <input type = "button" class = "btn btn-primary" value = "삭제" style = "font-size: 13px; height : 24px; float : right;"></a>
                 </div>
                 <div class="card-body">
@@ -140,11 +140,11 @@
                 </div>
             </div>
             
-            <a href = "http://localhost/prj3/jspFiles/03_travelManage.jsp">
+            <a href = "http://localhost/prj3/admin/03_travelManage.jsp">
             <input type = "button" value = "목록" id = "btn_list" class = "btn btn-primary" style = "font-size: 15px;"/>
             </a>
 	</div>
-		<nav>
+		<!-- <nav>
 		<ul class="pagination" style = "float: left ; margin-left: 350px; font-size: 15px;">
 			    <li>
 			      <a href="#" aria-label="Previous">
@@ -161,7 +161,7 @@
 			      </a>
 			    </li>
 			</ul>
-		</nav>
+		</nav> -->
 	</div>
 
 

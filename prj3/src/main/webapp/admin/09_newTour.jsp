@@ -117,9 +117,9 @@ $(function() {
 		<br/>
 		
 		<div id="buttons" >
-			<a href = "http://localhost:11856/team_prj3/jspFiles/03_travelManage.jsp">
+			<a href = "http://localhost/prj3/admin/07_tourManage.jsp">
 			<input type = "button" id="insert"  name="insert"  class = "btn btn-primary" value = "작성" style="width:80px;height:40px; font-weight:bold;"></a>
-			<a href = "http://localhost:11856/team_prj3/jspFiles/03_travelManage.jsp">
+			<a href = "http://localhost/prj3/admin/07_tourManage.jsp">
 			<input type = "button" class = "btn btn-default" value = "취소"  style = "border: 0.5px solid #dfdfdf"></a>
 		</div><br/>
 	
