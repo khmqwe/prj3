@@ -10,6 +10,6 @@
           </ul>
           </div>
 	<div class="header">
-	<a href="http://localhost/team_prj/jspFiles/02_main_login2.jsp"><img src="../common/images/buybowl_logo.png"></a>
+	<a href="http://localhost/team_prj/jspFiles/02_main_login2.jsp"><img src="http://localhost/prj3/common/images/buybowl_logo.png"></a>
 	</div>
 	</div>

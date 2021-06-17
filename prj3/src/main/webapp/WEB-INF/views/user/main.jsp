@@ -36,7 +36,7 @@
         
     </head>
     <body id="page-top">
-		<jsp:include page="/user/header.jsp"/>
+		<jsp:include page="header.jsp"/>
 		
         <!-- Masthead-->
         <header class="masthead">
@@ -73,7 +73,7 @@
                         <!-- Portfolio item 1-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/1.jpg" alt="..." />
                             </a>
  						  <div class="portfolio-caption">
 
@@ -86,7 +86,7 @@
                         <!-- Portfolio item 2-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/1.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Explore</div>
@@ -98,7 +98,7 @@
                         <!-- Portfolio item 3-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/1.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Finish</div>
@@ -110,7 +110,7 @@
                         <!-- Portfolio item 4-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/1.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Lines</div>
@@ -130,7 +130,7 @@
                         <!-- Portfolio item 1-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/1.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Threads</div>
@@ -142,7 +142,7 @@
                         <!-- Portfolio item 2-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/2.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/2.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Explore</div>
@@ -154,7 +154,7 @@
                         <!-- Portfolio item 3-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/3.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/3.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Finish</div>
@@ -166,7 +166,7 @@
                         <!-- Portfolio item 4-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <img class="img-fluid-main" src="http://localhost/prj3/assets/img/portfolio/4.jpg" alt="..." />
+                                <img class="img-fluid-main" src="../assets/img/portfolio/4.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Lines</div>
@@ -178,6 +178,6 @@
                 
             </div>
         </section>
- <jsp:include page="/user/footer.jsp"/>      
+ <jsp:include page="footer.jsp"/>      
     </body>
 </html>
