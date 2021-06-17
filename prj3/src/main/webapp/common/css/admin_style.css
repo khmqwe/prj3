@@ -1,0 +1,329 @@
+@charset "EUC-KR";
+.btn-default {width:80px;height:40px; font-weight:bold;}
+.table>tbody>tr>td{vertical-align: middle;}
+.log_in{
+	text-align: left;
+}
+#accordionSidebar{
+	height : 800px;
+	float : left;
+}
+.left_bar {
+	width: 200px;
+	height: 700px;
+	background-color: #dfdfdf;
+	float: left;
+	margin-top: -130px;
+	margin-right: 100px;
+}
+
+#sidebar-wrapper{
+	font-size: 15px;
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+}
+h3{
+	text-align: left; 
+	margin-left: 20px;
+}
+h4{
+	text-align: left; 
+	margin-left: 20px;
+	font-weight: bold;
+}
+
+#info{
+	margin : auto;
+	width : 820px; 
+	height : 400px;
+	background-color: white;
+	border-radius: 15px; 
+}
+#info_1{
+	margin : auto;
+	width : 820px; 
+	height : 450px;
+	background-color: white;
+	border-radius: 15px; 
+}
+#newWrite{
+	float:right ; 
+	width : 100px; 
+	height : 40px; 
+	margin-bottom: 10px; 
+	font-size: 15px;
+	border : 1px solid #dfdfdf;
+}
+#thumbnail{
+	width : 800px; 
+	height : 40px;
+}
+#demon{
+	width : 800px; 
+	height : 100px;
+}
+#tour_title{
+	float : left; 
+	margin-left : 20px;
+	margin-top : 20px;
+	height : 40px;
+	width : 200px; 
+}
+#title_bar{
+	width : 800px; 
+	height : 80px;
+	margin : auto; 
+	font-size: 15px;
+}
+#select_local{
+	float : right ; 
+	margin-right : 10px;
+	margin-top : 20px;
+}
+#review_content{
+	font-size: 15px;
+	width : 700px;
+	margin : auto ;
+}
+#contents_04{
+	width : 900px; 
+	height : 1050px;
+	background-color: #dfdfdf;
+	margin : auto;
+	border-radius: 15px;
+	color : #000000;
+}
+#contents_05{
+	width : 1200px; 
+	height : 1150px;
+	background-color: rgb(240, 240, 240);
+	margin : auto;
+	border-radius: 15px;
+}
+#contents_06{
+	width : 850px; 
+	height : 820px;
+	background-color: #dfdfdf;
+	margin : auto;
+	margin-left : 30px ; 
+	border-radius: 15px;
+}
+#contents_08{
+	width : 900px; 
+	height : 960px;
+	background-color: #dfdfdf;
+	margin : auto;
+	border-radius: 15px;
+	color : #000000;
+}
+#contents_11{
+	width : 900px; 
+	height : 500px;
+	background-color: #dfdfdf;
+	margin : auto;
+	border-radius: 15px;
+	color : #000000;
+}
+#btn_list{
+	width : 80px; 
+	height : 35px ; 
+	float : right ; 
+	margin-right: 20px;
+}
+.text_info{
+	width : 400px;
+	height : 35px; 
+	font-size: 15px;
+}
+.info_title{
+	width: 200px;
+	height : 50px;
+	background-color: #dfdfdf;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+}
+.container_1 {
+	width: 1500px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	text-align: center;
+	max-width: none!important;
+	max-height: none!important;
+}
+
+.inputBox {
+	border-radius: 10px;
+	height: 40px;
+	width: 300px;
+}
+
+.img_input{
+	float:left;
+	margin-left: 20px;
+}
+
+.left_box {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 20px;
+	vertical-align: middle;
+}
+.btn-primary{
+	margin : 0 auto;
+}
+.logout {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 300px;
+	vertical-align: middle;
+}
+
+.right_bar {
+	width: 1000px;
+	height: 1000px;
+	float: right;
+}
+.cards_area{
+	width : 500px;
+	height : 300px; 
+	margin-top: 30px;
+	margin-left: 30px;
+}
+.table {
+	margin-top: 30px;
+	text-align: center;
+	margin-left: 0px; 
+	font-size: 15px;
+}
+td{
+	vertical-align: center;
+}
+
+.content_title {
+	height: 70px; 
+	text-align: center;
+	font-weight: bold;
+	background-color: #C0C0C0;
+	font-size: 16px;
+	color : #000000;
+}
+
+span {
+	font-weight: bold;
+	vertical-align: middle;
+	padding: 15px 0;
+}
+
+.content {
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 100px;
+	text-align: center;
+}
+.graph{
+	float : left; 
+	height : 400px; 
+	width : 500px;
+	background-color: #dfdfdf;
+}
+
+.box {
+	width: 600px;
+	height: 400px;
+	margin: 0 auto;
+	border: 1px solid #dfdfdf;
+	background-color: #dfdfdf;
+	border-radius: 40px;
+}
+
+nav {
+	margin-top: 30px;
+}
+.cards{
+	float : right; 
+	height : 400px; 
+	width : 600px;
+}
+.graphic{
+	width : 100px;
+	
+}
+.graph{
+	margin-left: 10px; 
+}
+ .h_graph ul{margin:0 50px 0 50px;padding:1px 0 0 0;border:1px solid #ddd;border-top:0;border-right:0;font-size:11px;font-family:Tahoma, Geneva, sans-serif;list-style:none}
+ .h_graph li{position:relative;margin:10px 0;vertical-align:top;white-space:nowrap}
+ .h_graph .g_term{position:absolute;top:0;left:-50px;width:40px;font-weight:bold;color:#767676;line-height:20px;text-align:right}
+ .h_graph .g_bar{display:inline-block;position:relative;height:20px;border:1px solid #ccc;border-left:0;background:#e9e9e9}
+ .h_graph .g_bar span{position:absolute;top:0;right:-50px;width:40px;color:#767676;line-height:20px}
+ /* //UI Object */
+
+.revise {
+	width: 70px;
+	height: 35px;
+	border-radius: 5px;
+	border: 0px;
+	font-size: 17px;
+}
+.card{
+	width : 180px; 
+	height : 100px; 
+	background-color: #dfdfdf;
+	font-size: 15px;
+}
+
+.main{
+	width : 1200px;
+}
+#buttons{
+	float : right;
+	margin-bottom: 20px;
+}
+.add {
+	margin-right: 20px;
+}
+
+.add_btn {
+	width: 120px;
+	height: 40px;
+	margin-top: 10px;
+	margin-right: 85px;
+	float: right;
+	font-size: 18px;
+	border-radius: 5px;
+	color: white;
+	border: 0px;
+}
+
+.button {
+	width: 80px;
+	height: 40px;
+	font-size: 18px;
+	border: 0px;
+	border-radius: 5px;
+}
+
+.title_btn {
+	font-size : 15px; 
+	background-color : #C0C0C0;
+	font-weight: bold; 
+	width : 120px; 
+	height : 50px;
+} 
+.pagination{
+	margin-left : 450px; 
+	font-size: 15px;
+	margin-top: -15px;
+}
+.info_detail{
+	height : 20px; 
+	font-size: 14px;
+	background-color: white;
+}
