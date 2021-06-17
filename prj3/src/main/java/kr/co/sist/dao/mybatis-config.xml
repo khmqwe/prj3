@@ -19,5 +19,10 @@
   </environments>
   <mappers>
     <mapper resource="kr/co/sist/mapper/mainMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/commentMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/findMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/likeMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/memberMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/tourMapper.xml"/>
   </mappers>
 </configuration>
