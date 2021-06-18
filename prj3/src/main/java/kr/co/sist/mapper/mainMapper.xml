@@ -4,10 +4,54 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.mainMapper">
   
-  <select id="selectData" resultType="kr.co.sist.domain.TravelThumbDomain">
-  	select tr_num, tr_name, like_cnt, thumb_img
-  	from travel
+  <select id="selectTravelThumb1" resultType="kr.co.sist.domain.TravelThumbDomain">
+  	select  tr_num, tr_name, thumb_img, like_cnt
+	from		(select tr_num, tr_name, thumb_img, like_cnt
+				from travel
+				order by like_cnt desc)
+	where  rownum &lt; 5
   </select>
   
+  <select id="selectTravelThumb2" resultType="kr.co.sist.domain.TravelThumbDomain" parameterType="int">
+  	select  tr_num, tr_name, thumb_img, like_cnt
+	from	travel
+	where  	A_NUM = #{a_num} and rownum &lt; 5
+  </select>
+  
+  <select id="selectTravelInfo" resultType="kr.co.sist.domain.TravelInfoDomain" parameterType="Integer">
+  	select img1, img2, img3, tr_num, tr_name, tr_explain, tr_addr, tr_latitude, tr_longitude, tr_telnum, tr_time
+	from travel
+	where tr_num=#{tr_num}
+  </select>
+  
+  <select id="selectTravelTour" resultType="kr.co.sist.domain.TravelTourDomain" parameterType="Integer">
+  	select to_num, to_name, thumb_img, to_price
+	from tour
+	where tr_num=#{tr_num}
+  </select>
+  
+  <select id="selectTravelComment" resultType="kr.co.sist.domain.TravelCommentDomain" parameterType="Integer">
+  	select r_content, r_date, m_name
+	from review r, member m
+	where (r.m_id = m.m_id) and tr_num = #{tr_num}
+  </select>
+  
+  <select id="selectSearchedPlace1" resultType="kr.co.sist.domain.SearchTravelDomain">
+  	select 	tr_num, tr_name, like_cnt, thumb_img, a_name, tr_simple_explain
+	from	travel t, area a
+	where 	(t.a_num = a.a_num)
+  </select>
+  
+  <select id="selectSearchedPlace2" resultType="kr.co.sist.domain.SearchTravelDomain" parameterType="String">
+  	select 	tr_num, tr_name, like_cnt, thumb_img, a_name, tr_simple_explain
+	from	travel t, area a
+	where 	(t.a_num = a.a_num) and a_name like '%'||#{travel_area}||'%'
+  </select>
+  
+  <select id="selectSearchedPlace3" resultType="kr.co.sist.domain.SearchTravelDomain" parameterType="String">
+  	select 	tr_num, tr_name, like_cnt, thumb_img, a_name, tr_simple_explain
+	from	travel t, area a
+	where 	(t.a_num = a.a_num) and tr_name like '%'||#{travel_name}||'%'
+  </select>
   
 </mapper>
