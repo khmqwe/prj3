@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,50 +25,101 @@
         <!-- jQuery CDN(Contents Delivery Network) -->
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
  		<script type="text/javascript">
+ 		
+ 		$(function() {
+	
+ 			$("#btnGo").click(function() {
+ 				$("#contactForm").submit();
+ 			});
+ 			
+ 		});
  		</script>
  		
     </head>
     <body id="page-top">
 <jsp:include page="header.jsp"/>  
-
 <!-- 검색창 -->
 <div class="main-content">
 <div class="content-box" style="width: 1000px; margin-top: 90px;margin-bottom:30px"> 
-	<form id="contactForm">
+	<form id="contactForm" name="contactForm" action="travel_list.do">
           <div class="row">
 		  <div class="col-md-10">
-		    <input class="form-control" id="name" type="text" placeholder="가고싶은 곳을 검색하세요 *" required="required"/>
+		    <input class="form-control" id="name" name="name" type="text" placeholder="가고싶은 곳을 검색하세요 *" required="required"/>
+		    <input type="hidden" name="curPage" value="1"/>
+		    <input type="hidden" name="select" value="travel_name"/>
 		  </div>
 		  <div class="col-md-2">
-		    <button type="button" class="btn btn-warning" style="width:200px">GO</button>
+		    <button type="button" id="btnGo" name="btnGo" class="btn btn-warning" style="width:200px">GO</button>
 		  </div>
 		</div>
 	</form>
-	<br>
-	서울 | 대전 | 대구 | 부산 | 광주 |경기도 | 강원도 | 충청도 | 경상도 | 전라도 | 제주도 
+	<br><a href="travel_list.do?curPage=1&select=areaNumber&name=1" style="text-decoration: none;">서울</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=2" style="text-decoration: none;">대전</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=3" style="text-decoration: none;">대구</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=4" style="text-decoration: none;">부산</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=5" style="text-decoration: none;">광주</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=6" style="text-decoration: none;">경기도</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=7" style="text-decoration: none;">강원도</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=8" style="text-decoration: none;">충청도</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=9" style="text-decoration: none;">경상도</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=10" style="text-decoration: none;">전라도</a> | 
+	<a href="travel_list.do?curPage=1&select=areaNumber&name=11" style="text-decoration: none;">제주도</a> 
 </div>     
-<!-- 목록창 -->           
-<div class="content-box" >
-	<div style="display: inline-block">
-	<img class="img-fluid-main" src="../assets/img/portfolio/3.jpg" alt="..." />
+<!-- 목록창 -->
+<c:forEach var="page" items="${ pageList }">
+	<div class="content-box" style="display: flex;" >
+		<div style="flex: 1;">
+		<a href="travel_info.do?tr_num=${ page.tr_num }">
+		<img class="img-fluid-main" src="http://localHost/prj3/images/travel/${ page.thumb_img }" alt="..." />
+		</a>
+		</div>
+		<div style="padding-left: 20px; flex: 8;">
+			<h2><c:out value="${ page.tr_name }"/></h2>
+			<h5><c:out value="${ page.a_name }"/></h5>
+			${ page.tr_simple_explain }
+		</div>
+		<div style="flex: 1;">
+			<span style="color: #FF0000; font-size: 20px;">♥&nbsp;</span><c:out value="${ page.like_cnt }"/>
+		</div>
 	</div>
-	<div  style="display: inline-block; vertical-align: top;">
-	<h2>경복궁</h2>
-	설명
-	</div>
-</div>
-<!-- 목록창 -->           
-<div class="content-box" >
-	<div style="display: inline-block">
-	<img class="img-fluid-main" src="../assets/img/portfolio/3.jpg" alt="..." />
-	</div>
-	<div  style="display: inline-block; vertical-align: top;">
-	<h2>경복궁</h2>
-	설명
-	</div>
+</c:forEach>  
 
+<nav style="text-align: center; font-size: 30px;">
+  <ul class="pagination">
+  	<c:if test="${ pages.prevBtn eq true }">
+    <li>
+      <a href="travel_list.do?curPage=${ pages.curPage-1 }&select=${ spVO.select }&name=${ spVO.name }" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+  	</c:if>
+  	
+	<c:forEach var="i" begin="${ pages.startPageNum }" end="${ pages.endPageNum }">
+		  <li>
+			  <a href="travel_list.do?curPage=${ i }&select=${ spVO.select }&name=${ spVO.name }">
+			  <span style="
+			  <c:if test="${ pages.curPage eq i }">
+			  color: #ffc800;
+			  </c:if>
+			  ">
+			  <c:out value="${ i }"/>
+			  </span>
+			  </a>
+		  </li>
+	</c:forEach>
+	
+	<c:if test="${ pages.nextBtn eq true }">
+    <li>
+      <a href="travel_list.do?curPage=${ pages.curPage+1 }&select=${ spVO.select }&name=${ spVO.name }" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  	</c:if>
+  	
+  </ul>
+</nav>
 
-</div>
+<!-- pagination -->
 
 </div>
 <jsp:include page="footer.jsp"/>  

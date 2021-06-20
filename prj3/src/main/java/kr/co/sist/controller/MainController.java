@@ -1,11 +1,17 @@
 package kr.co.sist.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.sist.domain.PageDomain;
+import kr.co.sist.domain.SearchTravelDomain;
 import kr.co.sist.service.MainService;
+import kr.co.sist.service.PaginationService;
 import kr.co.sist.vo.SelectProcessVO;
 
 @Controller
@@ -40,14 +46,38 @@ public class MainController {
 		MainService ms = new MainService();
 		String select = spVO.getSelect();
 		
+		List<SearchTravelDomain> stdList = null;
+		
 		if (select.equals("none")) {
-			model.addAttribute("searchList", ms.searchSearchedPlace(1, spVO.getName()));
+			stdList = ms.searchSearchedPlace(1, spVO.getName());
+			//model.addAttribute("searchList", stdList);
 		} else if (select.equals("travel_area")) {
-			model.addAttribute("searchList", ms.searchSearchedPlace(2, spVO.getName()));
+			stdList = ms.searchSearchedPlace(2, spVO.getName());
+			//model.addAttribute("searchList", stdList);
 		} else if (select.equals("travel_name")) {
-			model.addAttribute("searchList", ms.searchSearchedPlace(3, spVO.getName()));
+			stdList = ms.searchSearchedPlace(3, spVO.getName());
+			//model.addAttribute("searchList", stdList);
+		} else if (select.equals("areaNumber")) {
+			stdList = ms.searchSearchedPlace(4, spVO.getName());
+			//model.addAttribute("searchList", stdList);
 		}
+		
+		PaginationService ps = new PaginationService(spVO.getCurPage(), stdList);
+		PageDomain pd = new PageDomain(spVO.getCurPage(), ps.getCntInPage(), ps.getStartInpage(),
+				ps.getEndInpage(), ps.getStartPageNum(), ps.getEndPageNum(), ps.isPrevBtn(), ps.isNextBtn());
+		
+		List<SearchTravelDomain> pageList = new ArrayList<SearchTravelDomain>();
+		
+		for (int i = ps.getStartInpage() - 1; i < ps.getEndInpage(); i++) {
+			pageList.add(stdList.get(i));
+		}
+		
+		model.addAttribute("pageList", pageList);
+		model.addAttribute("pages", pd);
+		model.addAttribute("spVO", spVO);
 		
 		return "user/travel_list";
 	}
+	
+	//지역버튼 누를 때 이땐 지역번호 받아서 뿌리면 될듯.
 }

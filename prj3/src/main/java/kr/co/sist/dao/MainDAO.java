@@ -90,6 +90,9 @@ private static MainDAO mDAO;
 		case 3:
 			stdList = ss.selectList("kr.co.sist.mainMapper.selectSearchedPlace3", search);
 			break;
+		case 4:
+			stdList = ss.selectList("kr.co.sist.mainMapper.selectSearchedPlace4", Integer.parseInt(search));
+			break;
 		default:
 			break;
 		}

@@ -52,6 +52,7 @@
             <div class="container">
                 <div class="masthead-subheading">Welcome!</div>
                 <form id="contactForm" name="contactForm" action="user/travel_list.do">
+                <input type="hidden" name="curPage" value="1"/>
                  <div class="row">
                   <div class="col-md-2" style="text-align: right;">
 				    <select id="select" name="select" style="width: 100px; height: 40px">

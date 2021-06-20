@@ -54,4 +54,18 @@
 	where 	(t.a_num = a.a_num) and tr_name like '%'||#{travel_name}||'%'
   </select>
   
+  <select id="selectSearchedPlace4" resultType="kr.co.sist.domain.SearchTravelDomain" parameterType="Integer">
+  	select 	tr_num, tr_name, like_cnt, thumb_img, a_name, tr_simple_explain
+	from	travel t, area a
+	where 	(t.a_num = a.a_num) and a.a_num = #{a_num}
+  </select>
+  
+  <!-- <select id="selectSearchedPlace4" resultType="kr.co.sist.domain.SearchTravelDomain" parameterType="Integer">
+  	select  tr_num, tr_name, like_cnt, thumb_img, a_name, tr_simple_explain
+	from	(select 	tr_num, tr_name, like_cnt, rownum rnum, thumb_img, a_name, tr_simple_explain
+			from	 	travel t, area a
+			where (t.a_num = a.a_num))
+	where   rnum between #{} and #{}
+  </select> -->
+  
 </mapper>
