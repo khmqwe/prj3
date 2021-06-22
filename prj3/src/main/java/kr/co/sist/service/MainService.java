@@ -29,11 +29,11 @@ public class MainService {
 		return tid;
 	}
 	
-	public TravelTourDomain searchTravelTour(int tr_num) {
+	public List<TravelTourDomain> searchTravelTour(int tr_num) {
 		
 		MainDAO mDAO = MainDAO.getInstance();
 		
-		TravelTourDomain ttd = mDAO.selectTravelTour(tr_num);
+		List<TravelTourDomain> ttd = mDAO.selectTravelTour(tr_num);
 		
 		return ttd;
 	}

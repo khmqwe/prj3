@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.adminTravelMapper">
+  
+  	<select id="selectAllCnt" resultType="int">
+  		select count(*)
+		from travel
+  	</select>
+	
+	<select id="selectTravelPage" parameterType="kr.co.sist.vo.TravelPageVO" resultType="kr.co.sist.domain.MainTravelDomain">
+	select 	tr_name, tr_num, a_name, tr_date, rnum
+	from	(select tr_name, tr_num, a_name, tr_date, row_number() over(order by tr_num) rnum
+			from travel t, area a
+			where (t.a_num = a.a_num))
+	where	rnum between #{startNum} and #{endNum}
+	</select>
+  
+</mapper>

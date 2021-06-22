@@ -3,13 +3,19 @@ package kr.co.sist.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.sist.domain.PageDomain;
 import kr.co.sist.domain.SearchTravelDomain;
+import kr.co.sist.domain.TravelCommentDomain;
+import kr.co.sist.service.LikeService;
 import kr.co.sist.service.MainService;
 import kr.co.sist.service.PaginationService;
 import kr.co.sist.vo.SelectProcessVO;
@@ -29,13 +35,39 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/user/travel_info.do", method=RequestMethod.GET)
-	public String travelInfoForm(int tr_num, Model model) {
+	public String travelInfoForm(HttpSession session, int tr_num, @RequestParam(defaultValue = "1")int curPage, Model model) {
 		
 		MainService ms = new MainService();
+		
+		List<TravelCommentDomain> tcList = ms.searchTravelComment(tr_num);
 		
 		model.addAttribute("travelInfo", ms.searchTravelInfo(tr_num));
 		model.addAttribute("travelTour", ms.searchTravelTour(tr_num));
 		model.addAttribute("travelComment", ms.searchTravelComment(tr_num));
+		
+		PaginationService ps = new PaginationService(curPage, tcList.size());
+		PageDomain pd = new PageDomain(curPage, ps.getCntInPage(), ps.getStartInpage(),
+				ps.getEndInpage(), ps.getStartPageNum(), ps.getEndPageNum(), ps.isPrevBtn(), ps.isNextBtn());
+		
+		List<TravelCommentDomain> tcList2 = new ArrayList<TravelCommentDomain>();
+		
+		for (int i = ps.getStartInpage() - 1; i < ps.getEndInpage(); i++) {
+			tcList2.add(tcList.get(i));
+		}
+		
+		model.addAttribute("pages", pd);
+		model.addAttribute("comments", tcList2);
+		
+		if (session.getAttribute("mid") != null) {
+			LikeService ls = new LikeService();
+			
+			String id = ls.searchLike((String)session.getAttribute("mid"));
+			if (id == null) {
+				model.addAttribute("heart", false);
+			} else {
+				model.addAttribute("heart", true);
+			}
+		}
 		
 		return "user/travel_info";
 	}
@@ -50,19 +82,16 @@ public class MainController {
 		
 		if (select.equals("none")) {
 			stdList = ms.searchSearchedPlace(1, spVO.getName());
-			//model.addAttribute("searchList", stdList);
 		} else if (select.equals("travel_area")) {
 			stdList = ms.searchSearchedPlace(2, spVO.getName());
-			//model.addAttribute("searchList", stdList);
 		} else if (select.equals("travel_name")) {
 			stdList = ms.searchSearchedPlace(3, spVO.getName());
-			//model.addAttribute("searchList", stdList);
 		} else if (select.equals("areaNumber")) {
 			stdList = ms.searchSearchedPlace(4, spVO.getName());
 			//model.addAttribute("searchList", stdList);
 		}
 		
-		PaginationService ps = new PaginationService(spVO.getCurPage(), stdList);
+		PaginationService ps = new PaginationService(spVO.getCurPage(), stdList.size());
 		PageDomain pd = new PageDomain(spVO.getCurPage(), ps.getCntInPage(), ps.getStartInpage(),
 				ps.getEndInpage(), ps.getStartPageNum(), ps.getEndPageNum(), ps.isPrevBtn(), ps.isNextBtn());
 		
@@ -79,5 +108,31 @@ public class MainController {
 		return "user/travel_list";
 	}
 	
-	//지역버튼 누를 때 이땐 지역번호 받아서 뿌리면 될듯.
+	@RequestMapping(value="/user/travel_info_comment.do", method=RequestMethod.GET)
+	public String travelInfoCommentProcess(int tr_num, @RequestParam(defaultValue = "1")int curPage, Model model) {
+		
+		MainService ms = new MainService();
+		
+		List<TravelCommentDomain> tcList = ms.searchTravelComment(tr_num);
+		
+		model.addAttribute("travelInfo", ms.searchTravelInfo(tr_num));
+		model.addAttribute("travelTour", ms.searchTravelTour(tr_num));
+		model.addAttribute("travelComment", ms.searchTravelComment(tr_num));
+		
+		PaginationService ps = new PaginationService(curPage, tcList.size());
+		PageDomain pd = new PageDomain(curPage, ps.getCntInPage(), ps.getStartInpage(),
+				ps.getEndInpage(), ps.getStartPageNum(), ps.getEndPageNum(), ps.isPrevBtn(), ps.isNextBtn());
+		
+		List<TravelCommentDomain> tcList2 = new ArrayList<TravelCommentDomain>();
+		
+		for (int i = ps.getStartInpage() - 1; i < ps.getEndInpage(); i++) {
+			tcList2.add(tcList.get(i));
+		}
+		
+		model.addAttribute("pages", pd);
+		model.addAttribute("comments", tcList2);
+		
+		return "user/travel_info";
+	}
+	
 }

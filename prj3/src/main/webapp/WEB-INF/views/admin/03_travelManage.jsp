@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,106 +71,71 @@
 		<div><a href = "http://localhost/prj3/admin/05_newWrite.jsp"/> 
 		<input type="button"  value = "새 글 쓰기" id = "newWrite" class = "btn btn-default"/></a></div>
 		
-		<div class = "table">
-			<table border = "1" cellspacing = "0" bordercolor = "#B4B4B4" class = "table table-striped"
-			 style = "width : 1100px ; height : 600px ; margin: 20px ">
-			<tr class = "content_title">
-				<td width = 50px;>번호</td>
-				<td width = 150px;>게시글 제목</td>
-				<td width = 80px;>지역구분</td>
-				<td width = 50px;>작성일</td>
-				<td width = 55px;>게시글관리</td>
-				<td width = 50px;>리뷰관리</td>
-				<td width = 50px;>투어관리</td>
-			</tr>
+	<div class = "table">
+		<table border = "1" cellspacing = "0" bordercolor = "#B4B4B4" class = "table table-striped"
+		 style = "width : 1100px ; height : 600px ; margin: 20px ">
+		<tr class = "content_title">
+			<td width = 50px;>번호</td>
+			<td width = 150px;>게시글 제목</td>
+			<td width = 80px;>지역구분</td>
+			<td width = 50px;>작성일</td>
+			<td width = 55px;>게시글관리</td>
+			<td width = 50px;>리뷰관리</td>
+			<td width = 50px;>투어관리</td>
+		</tr>
 	
 	
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary"/></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary"></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary"></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>경복궁</td>
-		<td>서울</td>
-		<td>2021.05.03</td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-	</tr>
+		<c:forEach var="mtd" items="${ mtdList }">
+		<tr>
+			<td><c:out value="${ mtd.rnum }"/></td>
+			<td><c:out value="${ mtd.tr_name }"/></td>
+			<td><c:out value="${ mtd.a_name }"/></td>
+			<td><c:out value="${ mtd.tr_date }"/></td>
+			<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
+			<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
+			<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
+		</tr>
+		</c:forEach>
 		</table>
+		
+		<nav style="text-align: center; font-size: 30px;">
+		  <ul class="pagination">
+		  	<c:if test="${ pages.prevBtn eq true }">
+		    <li>
+		      <a href="03_travelManage.do?curPage=${ pages.curPage-1 }&select=${ spVO.select }&name=${ spVO.name }" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		  	</c:if>
+		  	
+			<c:forEach var="i" begin="${ pages.startPageNum }" end="${ pages.endPageNum }">
+				  <li>
+					  <a href="03_travelManage.do?curPage=${ i }&select=${ spVO.select }&name=${ spVO.name }">
+					  <span style="
+					  <c:if test="${ pages.curPage eq i }">
+					  color: #ffc800;
+					  </c:if>
+					  ">
+					  <c:out value="${ i }"/>
+					  </span>
+					  </a>
+				  </li>
+			</c:forEach>
+			
+			<c:if test="${ pages.nextBtn eq true }">
+		    <li>
+		      <a href="03_travelManage.do?curPage=${ pages.curPage+1 }&select=${ spVO.select }&name=${ spVO.name }" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  	</c:if>
+		  	
+		  </ul>
+		</nav>
+		
 	</div>
 	
-	
-	
-		<nav>
-		<ul class="pagination">
-			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true" style="color: #3B8841">&laquo;</span>
-			      </a>
-			    </li>
-			    <li><a href="#" style="color: #3B8841">1</a></li>
-			    <li><a href="#" style="color: #3B8841">2</a></li>
-			    <li><a href="#" style="color: #3B8841">3</a></li>
-			    <li><a href="#" style="color: #3B8841">4</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true" style="color: #3B8841">&raquo;</span>
-			      </a>
-			    </li>
-			</ul>
-		</nav>
+		
 	</div>
 
 

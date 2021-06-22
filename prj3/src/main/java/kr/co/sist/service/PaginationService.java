@@ -1,9 +1,5 @@
 package kr.co.sist.service;
 
-import java.util.List;
-
-import kr.co.sist.domain.SearchTravelDomain;
-
 public class PaginationService {
 	
 	private int totalCnt;//리스트안 내용의 총개수
@@ -15,8 +11,8 @@ public class PaginationService {
 	private int endPageNum;//페이지의 마지막 번호
 	private boolean prevBtn, nextBtn; //버튼의 유무
 	
-	public PaginationService(int curPage, List<SearchTravelDomain> list) {
-		totalCnt = list.size();
+	public PaginationService(int curPage, int total) {
+		totalCnt = total;
 		cntInPage = 10;
 		totalPageCnt = (int)Math.ceil(totalCnt / (double)cntInPage);
 		

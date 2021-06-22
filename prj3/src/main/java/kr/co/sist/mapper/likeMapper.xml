@@ -4,13 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.likeMapper">
   
-	<select id="selectLike" resultType="kr.co.sist.domain.LikeCountDomain">
-		select tr_num, likeCnt
-		from	(select tr_num, count(tr_num) likeCnt
-				from LIKES
-				group by tr_num
-				order by likeCnt desc)
-		where rownum &lt;= 4
+	<select id="selectLike" parameterType="String" resultType="String">
+	select m_id
+	from likes
+	where m_id = #{m_id}
 	</select>
+	
+	<insert id="insertLike" parameterType="kr.co.sist.vo.LikeVO">
+	insert into likes(tr_num, m_id) values(#{tr_num}, #{m_id})
+	</insert>
+	
+	<update id="updateLikePlus" parameterType="int">
+		update travel
+		set like_cnt = like_cnt + 1
+		where tr_num = #{tr_num}	
+	</update>
+	
+	<delete id="deleteLike" parameterType="kr.co.sist.vo.LikeVO">
+	delete from likes
+	where tr_num=#{tr_num} and m_id=#{m_id}
+	</delete>
+	
+	<update id="updateLikeMinus" parameterType="int">
+		update travel
+		set like_cnt = like_cnt - 1
+		where tr_num = #{tr_num}
+	</update>
   
 </mapper>

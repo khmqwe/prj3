@@ -31,9 +31,10 @@
   </select>
   
   <select id="selectTravelComment" resultType="kr.co.sist.domain.TravelCommentDomain" parameterType="Integer">
-  	select r_content, r_date, m_name
+  	select r_content, to_char(r_date, 'YYYY.MM.DD') r_date, m_name
 	from review r, member m
-	where (r.m_id = m.m_id) and tr_num = #{tr_num}
+	where (r.m_id = m.m_id) and tr_num = #{ tr_num }
+	order by r_date desc
   </select>
   
   <select id="selectSearchedPlace1" resultType="kr.co.sist.domain.SearchTravelDomain">
@@ -60,12 +61,6 @@
 	where 	(t.a_num = a.a_num) and a.a_num = #{a_num}
   </select>
   
-  <!-- <select id="selectSearchedPlace4" resultType="kr.co.sist.domain.SearchTravelDomain" parameterType="Integer">
-  	select  tr_num, tr_name, like_cnt, thumb_img, a_name, tr_simple_explain
-	from	(select 	tr_num, tr_name, like_cnt, rownum rnum, thumb_img, a_name, tr_simple_explain
-			from	 	travel t, area a
-			where (t.a_num = a.a_num))
-	where   rnum between #{} and #{}
-  </select> -->
+  
   
 </mapper>

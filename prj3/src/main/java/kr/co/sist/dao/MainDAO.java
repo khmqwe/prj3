@@ -55,10 +55,10 @@ private static MainDAO mDAO;
 		return tid;
 	}
 	
-	public TravelTourDomain selectTravelTour(int tr_num) {
+	public List<TravelTourDomain> selectTravelTour(int tr_num) {
 		SqlSession ss = MyBatisHandler.getInstance().getHandler();
 		
-		TravelTourDomain ttd = ss.selectOne("kr.co.sist.mainMapper.selectTravelTour", tr_num);
+		List<TravelTourDomain> ttd = ss.selectList("kr.co.sist.mainMapper.selectTravelTour", tr_num);
 		
 		if (ss != null) {ss.close();}
 		
