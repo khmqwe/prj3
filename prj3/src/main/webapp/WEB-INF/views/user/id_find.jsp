@@ -23,6 +23,13 @@
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
+        
+        <script type="text/javascript">
+		$(function() {
+		});//ready
+        
+        </script>
+        
     </head>
     <body id="page-top">
 <jsp:include page="header.jsp"/>  
@@ -33,52 +40,53 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
 									<ol class="breadcrumb">
-									  <li><a href="#"><h3 class="btn btn-primary">아이디 찾기</h3></a></li>
-									  <li><a href="pass_find.jsp"><h3 class="btn btn-default">비밀번호 찾기</h3></a></li>
+									  <li><a href="id_find.do"><h3 class="btn btn-primary">아이디 찾기</h3></a></li>
+									  <li><a href="pass_find.do"><h3 class="btn btn-default">비밀번호 찾기</h3></a></li>
 									</ol>
                                     </div>
+                                    <form action="id_find_success.do" method="post">
                                     <div class="card-body">
-                                        <form>
 										<div style="text-align: center;">
 										<h3>등록정보로 아이디 찾기</h3>
 										회원가입 시 등록한 정보로 찾을 수 있습니다.
 										</div><br>					
                                         <!-- 이름 입력 -->
                                              <div class="form-floating mb-3">
-                                                <input class="form-control" id="inPutName" type="text" placeholder="name" />
+                                                <input class="form-control" id="m_name" name="m_name" type="text" placeholder="name" />
                                                 <label for="inputName">name</label>
                                             </div> 
-                                        <!-- 이메일 -->                                      
-                                        <div class="row">
+                                        <!-- 전화번호 -->                                      
+										   <div class="row">
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel1" type="text" placeholder="tel1" />
+                                                <input class="form-control" id="inputTel1" name="inputTel1"type="text" placeholder="tel1" />
                                                 <label for="inputTel">tel</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel2" type="text" placeholder="tel2" />
+                                                <input class="form-control" id="inputTel2" name="inputTel2"type="text" placeholder="tel2" />
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel3" type="text" placeholder="tel3" />
+                                                <input class="form-control" id="inputTel3" name="inputTel3"type="text" placeholder="tel3" />
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
-										</div>                                                                                     
-                                       <div style="text-align:right;"><a class="btn btn-primary btn-lg" href="">아이디 찾기</a></div>
-                                        </form>
-                                    </div>
+										</div> 
+										<br>                                                          
+                                       <div style="text-align:right;"><input type="submit" class="btn btn-primary btn-lg" value="아이디 찾기"/></div>
+										</div>                           
+                                    </form>
                                     <div class="card-footer text-center py-3">
+                                    </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-</div>
 <jsp:include page="footer.jsp"/>  
     </body>
 </html>

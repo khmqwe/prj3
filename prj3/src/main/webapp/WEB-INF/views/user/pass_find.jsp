@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,6 +24,9 @@
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
+        
+   
+        
     </head>
     <body id="page-top">
 <jsp:include page="header.jsp"/>  
@@ -33,49 +37,50 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
 									<ol class="breadcrumb">
-									  <li><a href="id_find.jsp"><h3 class="btn btn-default">아이디 찾기</h3></a></li>
-									  <li><a href="#"><h3 class="btn btn-primary">비밀번호 찾기</h3></a></li>
+									  <li><a href="id_find.do"><h3 class="btn btn-default">아이디 찾기</h3></a></li>
+									  <li><a href="pass_find.do"><h3 class="btn btn-primary">비밀번호 찾기</h3></a></li>
 									</ol>
                                     </div>
                                     <div class="card-body">
                                     
-                                        <form>
+                                        <form action="pass_find_success.do" method="post">
 										<div style="text-align: center;">
 										<h3>등록정보로 비밀번호 찾기</h3>
 										회원가입 시 등록한 정보로 찾을 수 있습니다.
-										</div><br>		                                        					
+										</div><br>		                  
+										<div id="test"></div>                      					
                                         <!-- 아이디 입력 -->
                                              <div class="form-floating mb-3">
-                                                <input class="form-control" id="inPutId" type="text" placeholder="id" />
+                                                <input class="form-control" id="m_id" name="m_id" type="text" placeholder="id" />
                                                 <label for="inputId">id</label>
                                             </div> 
                                         <!-- 이메일 -->
                                               <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" placeholder="Email" />
+                                                <input class="form-control" id="m_email" name="m_email" type="text" placeholder="Email" />
                                                 <label for="inputEmail">email</label>
                                             </div>                                        
-                                        <div class="row">
+                                        <!-- 전화번호 -->                                      
+										   <div class="row">
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel1" type="text" placeholder="tel1" />
+                                                <input class="form-control" id="inputTel1" name="inputTel1"type="text" placeholder="tel1" />
                                                 <label for="inputTel">tel</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel2" type="text" placeholder="tel2" />
+                                                <input class="form-control" id="inputTel2" name="inputTel2"type="text" placeholder="tel2" />
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel3" type="text" placeholder="tel3" />
+                                                <input class="form-control" id="inputTel3" name="inputTel3"type="text" placeholder="tel3" />
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
-										</div>
-										<div style="text-align:right;"><a class="btn btn-primary btn-lg" href="">비밀번호 찾기</a></div>                                                                                 
-                                                
+										</div> 
+                                        <div style="text-align:right;"><input type="submit" class="btn btn-primary btn-lg" value="비밀번호찾기"/></div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">

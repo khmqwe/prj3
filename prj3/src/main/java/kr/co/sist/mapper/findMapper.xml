@@ -4,5 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.findMapper">
   
+  <!-- 아이디찾기 -->
+  <select id="select_find_id" parameterType="kr.co.sist.vo.FindIdVO" resultType="String">
+  	select m_id
+	from member  
+	 where m_name=#{m_name} and m_telnum=#{m_telnum}
+	 
+  </select>
+  <!-- 비밀번호찾기 -->
+  <select id="select_find_pass" parameterType="kr.co.sist.vo.FindPassVO" resultType="String">
+  	select m_id
+	from member  
+	where m_id=#{m_id} and m_email=#{m_email} and m_telnum=#{m_telnum}
+  </select>
+  
+    <!--비밀번호변경 -->
+  <update id="update_find_pass" parameterType="kr.co.sist.vo.NewPassVO" >
+  	
+  	update member set m_pass=#{m_pass} where m_id=#{m_id}
+  </update>
   
 </mapper>

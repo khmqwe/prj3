@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html><html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,18 +22,32 @@
         <!-- jQuery CDN(Contents Delivery Network) -->
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>        
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="http://localhost/prj3/common/common/css/styles.css" rel="stylesheet"/>
+        <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
 <jsp:include page="header.jsp"/>  
 <div class="main-content">
 
 			<div class="content-box" style="margin-top:300px; text-align: center;">
-				<h2>
-					<strong>변경된 비밀번호는 2tes24d입니다.</strong>
-				</h2>
 				
-				<br> <a id="loginBtn" href="login.jsp" class="btn btn-success" >확인</a>
+				<!-- 아이디가 없을경우 -->
+				<c:if test="${ id eq null }">
+				<h2><strong>검색된 아이디가 없습니다.</strong></h2>
+				이름과 핸드폰번호를 확인해주세요. 
+				<br><br>
+				<a id="loginBtn" href="javascript:history.back();" class="btn btn-primary" >확인</a>
+				</c:if>
+				
+				<!-- 아이디가 검색된 경우 -->
+				<c:if test="${ id ne null }">
+				<h2><strong><c:out value="등록된 아이디는 ${ id } 입니다."/></strong></h2>
+				<br><br>
+				<a id="loginBtn" href="pass_find.do" class="btn btn-primary" >확인</a>
+				</c:if>
+				
+				
+				
+				</div>
 			</div>
 
 

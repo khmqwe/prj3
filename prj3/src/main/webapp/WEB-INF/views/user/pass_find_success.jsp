@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,13 +28,22 @@
     <body id="page-top">
 <jsp:include page="header.jsp"/>  
 <div class="main-content">
-
-			<div class="content-box" style="margin-top:300px; text-align: center;">
-				<h2>
-					<strong>등록하신 아이디는 ㅇㅇㅇ입니다.</strong>
-				</h2>
 				
-				<br> <a id="loginBtn" href="login.jsp" class="btn btn-success" >확인</a>
+				
+			<div class="content-box" style="margin-top:300px; text-align: center;">
+				<c:if test="${ np eq null }">
+				<h2><strong>검색된 정보가 없습니다.</strong></h2>
+				이름과 핸드폰번호를 확인해주세요. 
+				<br><br>
+				<a id="loginBtn" href="login.jsp" class="btn btn-primary" >확인</a>
+				</c:if>
+			
+				<c:if test="${ np ne null }">
+				<h2>
+					<strong>임시 비밀번호는 <c:out value="${ np }"/> 입니다.</strong>
+				</h2>
+				<br> <a id="loginBtn" href="login.jsp" class="btn btn-primary" >확인</a>
+				</c:if>
 			</div>
 
 
