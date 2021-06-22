@@ -24,6 +24,6 @@
     <mapper resource="kr/co/sist/mapper/likeMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/memberMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/tourMapper.xml"/>
-    <mapper resource="kr/co/sist/mapper/adminTravelMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/dashBoardMapper.xml"/>
   </mappers>
 </configuration>
