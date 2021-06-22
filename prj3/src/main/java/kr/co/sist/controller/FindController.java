@@ -41,8 +41,12 @@ public class FindController {
 	public String findPassProcess (FindPassVO fpVO,telVO tVO,Model model) {
 		FindService fs=FindService.getInstance();
 		fpVO.setM_telnum(tVO.getInputTel1()+"-"+tVO.getInputTel2()+"-"+tVO.getInputTel3());
+		
 		//검색된 id를 가져옴
 		String idKey=fs.findPass(fpVO);
+		if(idKey==null) {
+			return "user/pass_find_success";
+		}
 		//랜덤 비밀번호 생성
 		String newPass=fs.createPass();
 		//새로 발급할 id와 pass설정
@@ -58,11 +62,5 @@ public class FindController {
 
 		return "user/pass_find_success";
 	}//findPassForm
-	
-	
-	
-	
-	
-	
 	
 }

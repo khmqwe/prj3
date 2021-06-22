@@ -32,10 +32,10 @@
 				
 			<div class="content-box" style="margin-top:300px; text-align: center;">
 				<c:if test="${ np eq null }">
-				<h2><strong>검색된 정보가 없습니다.</strong></h2>
-				이름과 핸드폰번호를 확인해주세요. 
+				<h2><strong>가입된 회원이 아닙니다.</strong></h2>
+				회원 정보를 제대로 입력했는지 확인해주세요.  
 				<br><br>
-				<a id="loginBtn" href="login.jsp" class="btn btn-primary" >확인</a>
+				<a id="loginBtn" href="javascript:history.back();" class="btn btn-primary" >확인</a>
 				</c:if>
 			
 				<c:if test="${ np ne null }">
