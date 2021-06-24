@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,8 +51,8 @@
                 <div class="sidebar-heading border-bottom bg-light"><span style = "font-size: 20px;">ADMIN</span></div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">관광관리</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="http://localhost/prj3/admin/03_travelManage.do">관광관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="http://localhost/prj3/admin/10_memberList.do">회원관리</a>
                     <div style = "height : 200px;"></div>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
                    <span style = "font-size: 12px;">관리자 로그아웃</span></a>
@@ -66,8 +67,8 @@
 	</div>
 	
 	<div class = "right_bar">
-		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 10px;">투어관리</h1></div>
-		<div><a href = "http://localhost/prj3/admin/09_newTour.jsp"/> 
+		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 20px;">투어관리</h1></div>
+		<div><a href = "http://localhost/prj3/admin/09_newTour.do"> 
 		<input type="button"  value = "새 투어 등록" id = "newWrite" class = "btn btn-default"/></a></div>
 		
 		<div class = "table">
@@ -82,51 +83,55 @@
 			</tr>
 	
 	
-	<tr>
-		<td>3</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	
-	<tr>
-		<td>1</td>
-		<td>서울 경복궁 투어</td>
-		<td>서울</td>
-		<td>2021.05.03</td>
-		<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-	</tr>
+			<c:forEach var="atd" items="${ atdList }">
+			<tr>
+				<td><c:out value="${ atd.rnum }"/></td>
+				<td><c:out value="${ atd.to_name }"/></td>
+				<td><c:out value="${ atd.a_name }"/></td>
+				<td><c:out value="${ atd.to_date }"/></td>
+				<td><a href="http://localhost/prj3/admin/08_tourRevise.do?to_num=${ atd.to_num }"><input type = "button" value = "수정" class = "btn btn-primary"></a></td>
+			</tr>
+			</c:forEach>
+			
 		</table>
 	</div>
 	
 	
-	
-		<!-- <nav>
-		<ul class="pagination">
-			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true" style="color: #3B8841">&laquo;</span>
-			      </a>
-			    </li>
-			    <li><a href="#" style="color: #3B8841">1</a></li>
-			    <li><a href="#" style="color: #3B8841">2</a></li>
-			    <li><a href="#" style="color: #3B8841">3</a></li>
-			    <li><a href="#" style="color: #3B8841">4</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true" style="color: #3B8841">&raquo;</span>
-			      </a>
-			    </li>
-			</ul>
-		</nav> -->
+		<nav style="text-align: center; font-size: 30px;">
+		  <ul class="pagination">
+		  	<c:if test="${ pages.prevBtn eq true }">
+		    <li>
+		      <a href="07_tourManage.do?curPage=${ pages.curPage-1 }&tr_num=${ param.tr_num }" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		  	</c:if>
+		  	
+			<c:forEach var="i" begin="${ pages.startPageNum }" end="${ pages.endPageNum }">
+				  <li>
+					  <a href="07_tourManage.do?curPage=${ i }&tr_num=${ param.tr_num }">
+					  <span style="
+					  <c:if test="${ pages.curPage eq i }">
+					  color: #ffc800;
+					  </c:if>
+					  ">
+					  <c:out value="${ i }"/>
+					  </span>
+					  </a>
+				  </li>
+			</c:forEach>
+			
+			<c:if test="${ pages.nextBtn eq true }">
+		    <li>
+		      <a href="07_tourManage.do?curPage=${ pages.curPage+1 }&tr_num=${ param.tr_num }" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  	</c:if>
+		  	
+		  </ul>
+		</nav>
+		
 	</div>
 
 

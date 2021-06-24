@@ -3,6 +3,7 @@ package kr.co.sist.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.oreilly.servlet.MultipartRequest;
 
 import kr.co.sist.domain.PageDomain;
 import kr.co.sist.domain.SearchTravelDomain;
@@ -23,7 +25,7 @@ import kr.co.sist.vo.SelectProcessVO;
 @Controller
 public class MainController {
 	
-	@RequestMapping(value="/index.do", method=RequestMethod.GET)
+	@RequestMapping(value="/index.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String main(Model model) {
 		
 		MainService ms = new MainService();
@@ -34,7 +36,7 @@ public class MainController {
 		return "user/main";
 	}
 	
-	@RequestMapping(value="/user/travel_info.do", method=RequestMethod.GET)
+	@RequestMapping(value="/user/travel_info.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String travelInfoForm(HttpSession session, int tr_num, @RequestParam(defaultValue = "1")int curPage, Model model) {
 		
 		MainService ms = new MainService();
@@ -134,5 +136,12 @@ public class MainController {
 		
 		return "user/travel_info";
 	}
+	
+//	@RequestMapping(value="/user/travel_info_comment.do", method=RequestMethod.GET)
+//	public String travelInfoCommentProcess(HttpServletRequest req, Model model) {
+//		MultipartRequest mr=new MultipartRequest(req, null, 0, null);
+//		mr.getFilesystemName(null)
+//		
+//	}
 	
 }

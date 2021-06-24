@@ -27,11 +27,16 @@
                 <script type="text/javascript">
 
         $(function() { 
+        	$("#changebtn").click(function() {
+    			$("#updateinfoForm").submit();
+    		});
        		//아이디 중복확인 팝업 
        		$("#m_pass").click(function() {
        			window.open("mypage_modify_pass.jsp","id_pop","width=500px,height=300px");
        		});
-       		 
+        	$("#mainbtn").click(function() {
+				location.replace=history.go(-1);
+        	});
        });//ready
         
         </script>
@@ -49,7 +54,7 @@
 									 <div class="card-header"><h3 class="text-center font-weight-light my-4">회원정보 변경</h3></div>
                                     <div class="card-body">
                                     
-                                        <form>
+                                         <form  id="updateinfoForm" action="modMyInfoForm.do" method="POST">
 										<div style="text-align: center;">
 										회원정보를 변경할 수 있습니다. 
 										</div><br>		                                        					
@@ -93,10 +98,9 @@
 										  </div>
 										</div>
 										<div style="text-align:right;">
-										<a class="btn btn-primary btn-lg" href="">변경</a>
-										<a class="btn btn-primary btn-lg" href="">취소</a>
+										<input type= "button" id="changebtn" class="btn btn-primary btn-lg" value ="변경" />
+										<input  type= "button" id="mainbtn" class="btn btn-primary btn-lg"  value ="취소" />
 										</div>                                                                                 
-                                                
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">

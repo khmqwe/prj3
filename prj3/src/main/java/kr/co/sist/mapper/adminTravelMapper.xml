@@ -9,12 +9,47 @@
 		from travel
   	</select>
 	
-	<select id="selectTravelPage" parameterType="kr.co.sist.vo.TravelPageVO" resultType="kr.co.sist.domain.MainTravelDomain">
+	<select id="selectTravelPage" parameterType="kr.co.sist.vo.PageVO" resultType="kr.co.sist.domain.MainTravelDomain">
 	select 	tr_name, tr_num, a_name, tr_date, rnum
-	from	(select tr_name, tr_num, a_name, tr_date, row_number() over(order by tr_num) rnum
+	from	(select tr_name, tr_num, a_name, tr_date, row_number() over(order by tr_num desc) rnum
 			from travel t, area a
 			where (t.a_num = a.a_num))
 	where	rnum between #{startNum} and #{endNum}
 	</select>
+	
+	<insert id="insertTravel" parameterType="kr.co.sist.vo.InfoTravelVO">
+		insert into travel(tr_num, tr_name, tr_simple_explain, tr_explain, tr_addr, tr_latitude, tr_longitude, tr_telnum,
+ 		tr_time, tr_date, thumb_img, img1, img2, img3, like_cnt, a_num) 
+		values(seq_tr.nextval, #{tr_name}, #{tr_simple_explain}, #{tr_explain}, #{tr_addr}, #{tr_latitude},
+		#{tr_longitude}, #{tr_telnum}, #{tr_time}, sysdate, #{thumb_img}, #{img1}, #{img2}, #{img3}, 0, #{a_num})
+	</insert>
+	
+	<select id="selectTravel" resultType="kr.co.sist.domain.InfoTravelDomain" parameterType="int">
+		select tr_name, tr_simple_explain, tr_explain, tr_addr,
+			 tr_latitude, tr_longitude, tr_telnum, tr_time, thumb_img,
+			 img1, img2, img3, a_num
+		from   travel
+		where  tr_num = #{tr_num}
+	</select>
+	
+	<update id="updateTravel" parameterType="kr.co.sist.vo.InfoTravel2VO">
+	update travel
+	set tr_name=#{tr_name}, tr_simple_explain=#{tr_simple_explain}, tr_explain=#{tr_explain},
+	tr_addr=#{tr_addr}, tr_latitude=#{tr_latitude}, tr_longitude=#{tr_longitude}, tr_telnum=#{tr_telnum},
+	tr_time=#{tr_time}, a_num=#{a_num}
+	<if test="thumb_img != null">
+   	<trim prefix="," prefixOverrides=",">thumb_img=#{thumb_img}</trim>
+   	</if>
+	<if test="img1 != null">
+   	<trim prefix="," prefixOverrides=",">img1=#{img1}</trim>
+   	</if>
+	<if test="img2 != null">
+   	<trim prefix="," prefixOverrides=",">img2=#{img2}</trim>
+   	</if>
+	<if test="img3 != null">
+   	<trim prefix="," prefixOverrides=",">img3=#{img3}</trim>
+   	</if>
+   	where  	tr_num=#{tr_num}
+	</update>
   
 </mapper>

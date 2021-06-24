@@ -11,8 +11,6 @@
 	
 	<!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="http://localhost/prj3/common/sidebar/css/styles.css" rel="stylesheet" />
 	<!-- Custom fonts for this template-->
     <link href="http://localhost/prj3/common/startbootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -51,8 +49,8 @@
                 <div class="sidebar-heading border-bottom bg-light"><span style = "font-size: 20px;">ADMIN</span></div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">관광관리</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="03_travelManage.do">관광관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="10_memberList.do">회원관리</a>
                     <div style = "height : 200px;"></div>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
                    <span style = "font-size: 12px;">관리자 로그아웃</span></a>
@@ -62,13 +60,13 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="http://localhost/prj3/common/js/scripts.js"></script>
             
 	</div>
 	
 	<div class = "right_bar">
-		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 10px;">관광관리</h1></div>
-		<div><a href = "http://localhost/prj3/admin/05_newWrite.jsp"/> 
+		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 20px;">관광관리</h1></div>
+		<div><a href = "http://localhost/prj3/admin/05_newWrite.do">
 		<input type="button"  value = "새 글 쓰기" id = "newWrite" class = "btn btn-default"/></a></div>
 		
 	<div class = "table">
@@ -91,9 +89,9 @@
 			<td><c:out value="${ mtd.tr_name }"/></td>
 			<td><c:out value="${ mtd.a_name }"/></td>
 			<td><c:out value="${ mtd.tr_date }"/></td>
-			<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-			<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
-			<td><input type = "button" value = "수정" class = "btn btn-primary" ></td>
+			<td><a href="04_contentsRevise.do?tr_num=${ mtd.tr_num }"><input type = "button" value = "수정" class = "btn btn-primary" ></a></td>
+			<td><a href="06_reviewManage.do?tr_num=${ mtd.tr_num }"><input type = "button" value = "수정" class = "btn btn-primary" ></a></td>
+			<td><a href="07_tourManage.do?tr_num=${ mtd.tr_num }"><input type = "button" value = "수정" class = "btn btn-primary" ></a></td>
 		</tr>
 		</c:forEach>
 		</table>

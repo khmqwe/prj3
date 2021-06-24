@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,10 +31,10 @@
 
 			<div class="content-box" style="margin-top:300px; text-align: center;">
 				<h2>
-					<strong>ㅇㅇㅇ님 회원가입을 축하합니다. </strong>
+					<strong><c:out value="${param.MNAME}" />님 회원가입을 축하합니다. </strong>
 				</h2>
 				<br> 로그인 후에 서비스를 이용할 수 있습니다. <br>
-				<br> <a id="loginBtn" href="login.jsp" class="btn btn-success" >로그인</a>
+				<br> <a id="loginBtn" href="loginForm.do" class="btn btn-success" >로그인</a>
 			</div>
 
 

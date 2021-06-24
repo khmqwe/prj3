@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.adminCommentMapper">
+  
+  	<select id="selectCommentCnt" resultType="int" parameterType="int">
+		select count(*)
+		from review r, member m
+		where (r.m_id = m.m_id) and tr_num = #{tr_num}  	
+  	</select>
+  
+  	<select id="selectComment" resultType="kr.co.sist.domain.InfoCommentDomain" parameterType="kr.co.sist.vo.AdminCommentPageVO">
+		select  r_num, r_content, r_date, m_name
+		from		(select r_num, r_content, to_char(r_date, 'yyyy-mm-dd') r_date, m.m_name, row_number() over(order by r_date desc) rnum
+					from review r, member m
+					where (r.m_id = m.m_id) and tr_num = #{tr_num})
+		where   rnum between #{startNum} and #{endNum}
+  	</select>
+  	
+  	<select id="selectInfoTravel" resultType="kr.co.sist.domain.InfoReviewTravelDomain" parameterType="int">
+  		select tr_name, a_name
+		from travel t, area a
+		where (t.a_num = a.a_num) and tr_num = #{tr_num}
+  	</select>
+  	
+  	<delete id="deleteComment" parameterType="int">
+  	delete from review
+	where r_num = #{r_num}
+  	</delete>
+	
+  
+</mapper>

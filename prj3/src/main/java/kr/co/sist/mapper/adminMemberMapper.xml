@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.adminMemberMapper">
+	
+	<select id="selectMemberCnt" resultType="int">
+		select 	count(*)
+		from 	member
+	</select>
+	
+	<select id="selectAdminMember" resultType="kr.co.sist.domain.AdminMemberDomain" parameterType="kr.co.sist.vo.PageVO">
+		select	m_id, m_name, m_date, rnum
+		from		(select m_id, m_name, to_char(m_date, 'yyyy-mm-dd') m_date, row_number() over(order by m_date desc) rnum
+					from member where length(m_name) != 0)
+		where 	rnum between #{startNum} and #{endNum}		
+	</select>
+	
+	<select id="selectAdminMemberDetail1" resultType="kr.co.sist.domain.AdminMemberDetail1Domain" parameterType="String">
+		select m_id, m_name, m_email, m_telnum, to_char(m_date, 'yyyy-mm-dd') m_date
+		from member
+		where m_id= #{m_id}
+	</select>
+	
+	<select id="selectAdminMemberDetail2" resultType="kr.co.sist.domain.AdminMemberDetail2Domain" parameterType="String">
+		select 		b_num, to_char(b_due_date, 'yyyy-mm-dd') b_due_date, to_name
+		from 		tour t, booking b
+		where 		(b.to_num = t.to_num) and m_id =#{m_id} and b_due_date &gt;= sysdate
+	</select>
+	
+	<update id="deleteAdminMember" parameterType="String">
+		update member
+		set m_pass='', m_name='', m_email='', m_telnum='', m_date=''
+		where m_id=#{m_id}
+	</update>
+</mapper>

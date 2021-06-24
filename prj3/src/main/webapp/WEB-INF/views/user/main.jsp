@@ -84,7 +84,7 @@
 	                    <div class="col-lg-3 col-sm-6 mb-4">
 	                        <!-- Portfolio item 1-->
 	                        <div class="portfolio-item">
-	                            <a class="portfolio-link" href="user/travel_info.do?tr_num=${ ttd.tr_num }">
+	                            <a class="portfolio-link" href="http://localhost/prj3/user/travel_info.do?tr_num=${ ttd.tr_num }">
 	                                <img class="img-fluid-main" src="http://localhost/prj3/images/travel/${ ttd.thumb_img }" alt="travel_picture" />
 	                            </a>
 	 						  <div class="portfolio-caption">
@@ -109,7 +109,7 @@
 	                    <div class="col-lg-3 col-sm-6 mb-4">
 	                        <!-- Portfolio item 1-->
 	                        <div class="portfolio-item">
-	                            <a class="portfolio-link" href="user/travel_info.do?tr_num=${ ttd.tr_num }">
+	                            <a class="portfolio-link" href="http://localhost/prj3/user/travel_info.do?tr_num=${ ttd.tr_num }">
 	                                <img class="img-fluid-main" src="http://localhost/prj3/images/travel/${ ttd.thumb_img }" alt="travel_picture" />
 	                            </a>
 	 						  <div class="portfolio-caption">

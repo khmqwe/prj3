@@ -24,6 +24,13 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
     </head>
+     <script type="text/javascript">
+    $(function() {
+		$("#submitBtn").click(function() {
+			$("#passCheck").submit();
+		});
+	});//ready
+    </script>
     <body id="page-top">
 <jsp:include page="header.jsp"/>  
 <div class="main-content">
@@ -35,8 +42,8 @@
 <h3> <strong>회원님의 개인정보를 안전하게 보호하기 위해<br/>
 	<span style="color: #DC1437;">인증 후 변경이 가능</span>합니다.</strong> </h3> <br>
 	<br>
-	<form action="" method="post" id="" name=""> 
-	<input type="password" placeholder="비밀번호를 입력해주세요." id="pass" name="pass"/> <br><br>
+	<form  id="passCheck" action="checkPassProcess.do" method="post">
+	<input type="password" placeholder="비밀번호를 입력해주세요." id="pass" name="MPASS"/> <br><br>
 	<input type="button" value="확인" id="submitBtn" class="btn btn-secondary" style="width: 200px;"/>
 	</form>
 	

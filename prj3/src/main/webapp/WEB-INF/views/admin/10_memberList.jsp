@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,8 +52,8 @@
                 <div class="sidebar-heading border-bottom bg-light"><span style = "font-size: 20px;">ADMIN</span></div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">관광관리</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="http://localhost/prj3/admin/03_travelManage.do">관광관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="http://localhost/prj3/admin/10_memberList.do">회원관리</a>
                     <div style = "height : 200px;"></div>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
                    <span style = "font-size: 12px;">관리자 로그아웃</span></a>
@@ -79,75 +80,57 @@
 				<td width = 50px;>가입일</td>
 				<td width = 55px;>관리</td>
 			</tr>
-	
-	
-	<tr>
-		<td>6</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	<tr>
-		<td>5</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	<tr>
-		<td>4</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input type="button"  value = "수정" class = "btn btn-primary"/></td>
-	</tr>
-	
-	<tr>
-		<td>1</td>
-		<td>song</td>
-		<td>송준희</td>
-		<td>2021.05.03</td>
-		<td><a href = "http://localhost/prj3/admin/11_memberManage.jsp">
-		<input type = "button" value = "수정" class = "btn btn-primary" ></a></td>
-	</tr>
+			
+			<c:forEach var="amd" items="${ amdList }">			
+			<tr>
+				<td><c:out value="${ amd.rnum }"/></td>
+				<td><c:out value="${ amd.m_id }"/></td>
+				<td><c:out value="${ amd.m_name }"/></td>
+				<td><c:out value="${ amd.m_date }"/></td>
+				<td><a href = "http://localhost/prj3/admin/11_memberManage.do?m_id=${ amd.m_id }">
+				<input type="button" value="수정" class = "btn btn-primary"></a></td>
+			</tr>
+			</c:forEach>
 		</table>
 	</div>
 	
 	
 	
-		<!-- <nav>
-		<ul class="pagination">
-			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true" style="color: #3B8841">&laquo;</span>
-			      </a>
-			    </li>
-			    <li><a href="#" style="color: #3B8841">1</a></li>
-			    <li><a href="#" style="color: #3B8841">2</a></li>
-			    <li><a href="#" style="color: #3B8841">3</a></li>
-			    <li><a href="#" style="color: #3B8841">4</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true" style="color: #3B8841">&raquo;</span>
-			      </a>
-			    </li>
-			</ul>
-		</nav> -->
+		<nav style="text-align: center; font-size: 30px;">
+		  <ul class="pagination">
+		  	<c:if test="${ pages.prevBtn eq true }">
+		    <li>
+		      <a href="10_memberList.do?curPage=${ pages.curPage-1 }" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		  	</c:if>
+		  	
+			<c:forEach var="i" begin="${ pages.startPageNum }" end="${ pages.endPageNum }">
+				  <li>
+					  <a href="10_memberList.do?curPage=${ i }">
+					  <span style="
+					  <c:if test="${ pages.curPage eq i }">
+					  color: #ffc800;
+					  </c:if>
+					  ">
+					  <c:out value="${ i }"/>
+					  </span>
+					  </a>
+				  </li>
+			</c:forEach>
+			
+			<c:if test="${ pages.nextBtn eq true }">
+		    <li>
+		      <a href="10_memberList.do?curPage=${ pages.curPage+1 }" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  	</c:if>
+		  	
+		  </ul>
+		</nav>
+		
 	</div>
 
 

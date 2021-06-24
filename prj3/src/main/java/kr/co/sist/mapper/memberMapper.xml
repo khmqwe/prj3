@@ -3,7 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.memberMapper">
-  
-  
-  
+  <select id="selectLoginInfo"  resultType="String">
+		select m_id
+		from member
+		where m_id=#{MID} and m_pass=#{MPASS}
+ </select>
+ <select id="selectId"   resultType="String">
+		select m_id
+		from member
+		where m_id=#{MID}
+</select>
+<select id="selectPass"  resultType="String">
+		select m_pass
+		from member
+		where m_id=#{MID} and m_pass=#{MPASS}
+</select>
+<insert id="insertMember" parameterType="kr.co.sist.vo.MemberVO">
+		insert into
+		member(m_id,m_pass,m_name,m_email,m_telnum,m_date)
+		values(#{MID},#{MPASS},#{MNAME},#{MEMAIL},#{MTELNUM1}||'-'||#{MTELNUM2}||'-'||#{MTELNUM3},sysdate)
+</insert>
 </mapper>

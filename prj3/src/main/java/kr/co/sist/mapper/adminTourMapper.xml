@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.adminTourMapper">
+	
+	<select id="selectTourCnt" resultType="int" parameterType="int">
+		select count(*)
+		from tour
+		where tr_num = #{tr_num}
+	</select>
+	
+	<select id="selectTourMainPage" resultType="kr.co.sist.domain.AdminTourDomain" parameterType="kr.co.sist.vo.AdminTourPageVO">
+		select  to_name, to_num, a_name, to_date, rnum
+		from	(select to_name, to_num, a_name, to_char(to_date, 'yyyy-mm-dd') to_date, row_number() over(order by to_date desc) rnum
+				from tour t, area a, travel tr
+				where (t.tr_num = tr.tr_num) and (tr.a_num = a.a_num) and tr.tr_num = #{tr_num})
+		where	rnum between #{startNum} and #{endNum}			
+	</select>
+	
+	<select id="selectTourDetail" resultType="kr.co.sist.domain.AdminInfoTourDomain" parameterType="int">
+		select TO_NUM, TO_NAME, THUMB_IMG, PLAN_EXPLAIN, TO_MEETING_LOC,
+		TO_MEETING_TIME, TO_TAKE_TIME, TO_START_DATE, TO_END_DATE, TO_PRICE,LA_NUM
+		from tour
+		where to_num = #{to_num}
+	</select>
+	
+</mapper>

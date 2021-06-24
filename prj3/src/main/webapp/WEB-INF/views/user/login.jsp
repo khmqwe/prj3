@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,6 +26,13 @@
         <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
+    <script type="text/javascript">
+    $(function() {
+		$("#login_btn").click(function() {
+			$("#loginFrm").submit();
+		});
+	});//ready
+    </script>
 <jsp:include page="header.jsp"/>  
 <div class="main-content">
 
@@ -33,18 +41,18 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form  id="loginFrm" action="loginProcess.do" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" id="inputEmail" type="email" name="MID" placeholder="name@example.com" />
                                                 <label for="inputEmail">id</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                <input class="form-control" id="inputPassword" type="password"  name="MPASS" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">아이디/비밀번호를 잊으셨나요?</a>
-                                                <a class="btn btn-primary" href="index.html">로그인</a>
+                                                <input type="button" class="btn btn-primary" value="로그인"  id="login_btn" />
                                             </div>
                                         </form>
                                     </div>
