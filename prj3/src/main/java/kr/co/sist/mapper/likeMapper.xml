@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.likeMapper">
   
-	<select id="selectLike" parameterType="String" resultType="String">
+	<select id="selectLike" parameterType="kr.co.sist.vo.LikeVO" resultType="String">
 	select m_id
 	from likes
-	where m_id = #{m_id}
+	where m_id = #{m_id} and tr_num=#{tr_num}
 	</select>
 	
 	<insert id="insertLike" parameterType="kr.co.sist.vo.LikeVO">

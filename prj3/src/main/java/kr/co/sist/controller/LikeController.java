@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.sist.service.LikeService;
 import kr.co.sist.vo.LikeVO;
@@ -21,10 +20,10 @@ public class LikeController {
 	public String checkLike(HttpSession session, int tr_num) {
 		
 		LikeService ls = new LikeService(); 
-		String id = ls.searchLike((String)session.getAttribute("mid"));
-		 
-		LikeVO lVO = new LikeVO(tr_num, (String)session.getAttribute("mid"));
+		LikeVO lVO = new LikeVO(tr_num, (String)session.getAttribute("MID"));
 		
+		String id = ls.searchLike(lVO);
+		 
 		JSONObject json = new JSONObject();
 		
 		if (id == null) {

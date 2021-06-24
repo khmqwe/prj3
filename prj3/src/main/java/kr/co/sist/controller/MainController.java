@@ -20,6 +20,7 @@ import kr.co.sist.domain.TravelCommentDomain;
 import kr.co.sist.service.LikeService;
 import kr.co.sist.service.MainService;
 import kr.co.sist.service.PaginationService;
+import kr.co.sist.vo.LikeVO;
 import kr.co.sist.vo.SelectProcessVO;
 
 @Controller
@@ -60,10 +61,11 @@ public class MainController {
 		model.addAttribute("pages", pd);
 		model.addAttribute("comments", tcList2);
 		
-		if (session.getAttribute("mid") != null) {
+		if (session.getAttribute("MID") != null) {
 			LikeService ls = new LikeService();
+			LikeVO lVO = new LikeVO(tr_num, (String)session.getAttribute("MID"));
+			String id = ls.searchLike(lVO);
 			
-			String id = ls.searchLike((String)session.getAttribute("mid"));
 			if (id == null) {
 				model.addAttribute("heart", false);
 			} else {
@@ -74,15 +76,16 @@ public class MainController {
 		return "user/travel_info";
 	}
 	
-	@RequestMapping(value="/user/travel_list.do", method=RequestMethod.GET)
+	@RequestMapping(value="/user/travel_list.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String searchProcess(SelectProcessVO spVO, Model model) {
 		
 		MainService ms = new MainService();
 		String select = spVO.getSelect();
-		System.out.println(select);
 		List<SearchTravelDomain> stdList = null;
 		
-		if (select.equals("none")) {
+		if (select.equals("none") && !spVO.getName().equals("")) {
+			stdList = ms.searchSearchedPlace(2, spVO.getName());
+		} else if (select.equals("none")) {
 			stdList = ms.searchSearchedPlace(1, spVO.getName());
 		} else if (select.equals("travel_area")) {
 			stdList = ms.searchSearchedPlace(2, spVO.getName());
@@ -110,38 +113,31 @@ public class MainController {
 		return "user/travel_list";
 	}
 	
-	@RequestMapping(value="/user/travel_info_comment.do", method=RequestMethod.GET)
-	public String travelInfoCommentProcess(int tr_num, @RequestParam(defaultValue = "1")int curPage, Model model) {
-		
-		MainService ms = new MainService();
-		
-		List<TravelCommentDomain> tcList = ms.searchTravelComment(tr_num);
-		
-		model.addAttribute("travelInfo", ms.searchTravelInfo(tr_num));
-		model.addAttribute("travelTour", ms.searchTravelTour(tr_num));
-		model.addAttribute("travelComment", ms.searchTravelComment(tr_num));
-		
-		PaginationService ps = new PaginationService(curPage, tcList.size());
-		PageDomain pd = new PageDomain(curPage, ps.getCntInPage(), ps.getStartInpage(),
-				ps.getEndInpage(), ps.getStartPageNum(), ps.getEndPageNum(), ps.isPrevBtn(), ps.isNextBtn());
-		
-		List<TravelCommentDomain> tcList2 = new ArrayList<TravelCommentDomain>();
-		
-		for (int i = ps.getStartInpage() - 1; i < ps.getEndInpage(); i++) {
-			tcList2.add(tcList.get(i));
-		}
-		
-		model.addAttribute("pages", pd);
-		model.addAttribute("comments", tcList2);
-		
-		return "user/travel_info";
-	}
-	
 //	@RequestMapping(value="/user/travel_info_comment.do", method=RequestMethod.GET)
-//	public String travelInfoCommentProcess(HttpServletRequest req, Model model) {
-//		MultipartRequest mr=new MultipartRequest(req, null, 0, null);
-//		mr.getFilesystemName(null)
+//	public String travelInfoCommentProcess(int tr_num, @RequestParam(defaultValue = "1")int curPage, Model model) {
 //		
+//		MainService ms = new MainService();
+//		
+//		List<TravelCommentDomain> tcList = ms.searchTravelComment(tr_num);
+//		
+//		model.addAttribute("travelInfo", ms.searchTravelInfo(tr_num));
+//		model.addAttribute("travelTour", ms.searchTravelTour(tr_num));
+//		model.addAttribute("travelComment", ms.searchTravelComment(tr_num));
+//		
+//		PaginationService ps = new PaginationService(curPage, tcList.size());
+//		PageDomain pd = new PageDomain(curPage, ps.getCntInPage(), ps.getStartInpage(),
+//				ps.getEndInpage(), ps.getStartPageNum(), ps.getEndPageNum(), ps.isPrevBtn(), ps.isNextBtn());
+//		
+//		List<TravelCommentDomain> tcList2 = new ArrayList<TravelCommentDomain>();
+//		
+//		for (int i = ps.getStartInpage() - 1; i < ps.getEndInpage(); i++) {
+//			tcList2.add(tcList.get(i));
+//		}
+//		
+//		model.addAttribute("pages", pd);
+//		model.addAttribute("comments", tcList2);
+//		
+//		return "user/travel_info";
 //	}
 	
 }

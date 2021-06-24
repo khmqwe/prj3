@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.commentMapper">
-  
+	
+	<insert id="insertComment" parameterType="kr.co.sist.vo.CommentVO">
+		insert into review(r_num, r_content, r_date, m_id, tr_num)
+		values(seq_re.nextval, #{r_content}, to_char(sysdate,'yyyy-mm-dd'), #{id}, #{tr_num})
+	</insert>
   
 </mapper>

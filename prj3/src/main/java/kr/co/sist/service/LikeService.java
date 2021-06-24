@@ -5,9 +5,9 @@ import kr.co.sist.vo.LikeVO;
 
 public class LikeService {
 	
-	public String searchLike(String m_id) {
+	public String searchLike(LikeVO lVO) {
 		LikeDAO lDAO = LikeDAO.getInstance();
-		String id = lDAO.selectLike(m_id);
+		String id = lDAO.selectLike(lVO);
 		
 		return id;
 	}

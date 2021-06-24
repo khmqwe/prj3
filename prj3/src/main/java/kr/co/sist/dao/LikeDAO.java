@@ -21,9 +21,9 @@ public class LikeDAO {
 		return lDAO;
 	}
 	
-	public String selectLike(String m_id) {
+	public String selectLike(LikeVO lVO) {
 		SqlSession ss = MyBatisHandler.getInstance().getHandler();
-		String id = ss.selectOne("kr.co.sist.likeMapper.selectLike", m_id);
+		String id = ss.selectOne("kr.co.sist.likeMapper.selectLike", lVO);
 		
 		if (ss != null) {ss.close();}
 		

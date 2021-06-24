@@ -29,7 +29,7 @@
                                 <li><a class="dropdown-item" id ="checkPassForm"  onclick="checkPassForm();">내 정보 변경</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" >예약한 투어</a></li>
-                                <li><a class="dropdown-item" >내가 쓴 리뷰</a></li>
+                                <li><a href="http://localhost/prj3/user/mypage_reply.do" class="dropdown-item" style="cursor: pointer;">내가 쓴 리뷰</a></li>
                             </ul>
                         </li> <li class="nav-item">
                        <button type="button" class="btn btn-light" id="logout_btn">로그아웃</button>

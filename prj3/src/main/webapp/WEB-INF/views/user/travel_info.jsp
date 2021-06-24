@@ -44,7 +44,7 @@
 	    	 effect:'rain'
 	     });
 	     
-	     if ("${sessionScope.mid}" == "") {
+	     if ("${sessionScope.MID}" == "") {
 	    	 $("#likeDiv").css("display", "none");
 	     } else {
 	    	 $("#likeDiv").css("display", "block");
@@ -75,11 +75,15 @@
 	    	 
 	     $('#commentBtn').click(function() {
 	    	
-	    	 if ("${sessionScope.mid}" == "") {
+	    	 if ("${sessionScope.MID}" == "") {
 	    		 alert("로그인 후 댓글을 입력할 수 있습니다.");
-	    	 } else {
-	    		 //로그인이 되었을 때 submit으로 Controller로 넘기는 부분.
+	    		 return;
 	    	 }
+    		 if ($("#r_content").val() == "") {
+	    		 alert("내용을 입력해 주세요.");
+    		 } else {
+    			 $("#commentFrm").submit();
+    		 }
 				    	 
 	     });
 	     
@@ -136,13 +140,13 @@
 </div>
 	<div class="content-box" >
 	<div style="text-align: right;" id="likeDiv">
-	<span style="font-size: 30px; padding-bottom: 20px;">Like</span>
-	<c:if test="${ heart eq true }">
-		<span id="like" style="color:#DC143C;font-size: 60px; cursor: pointer;">♥</span>
-	</c:if>
-	<c:if test="${ heart eq false }">
-		<span id="like" style="color:#DC143C;font-size: 60px; cursor: pointer;">♡</span>
-	</c:if>
+		<span style="font-size: 30px; padding-bottom: 20px;">Like</span>
+		<c:if test="${ heart eq true }">
+			<span id="like" style="color:#DC143C;font-size: 60px; cursor: pointer;">♥</span>
+		</c:if>
+		<c:if test="${ heart eq false }">
+			<span id="like" style="color:#DC143C;font-size: 60px; cursor: pointer;">♡</span>
+		</c:if>
 	</div>
 	<h1><c:out value="${ travelInfo.tr_name }"/></h1>
 	${ travelInfo.tr_explain }
@@ -204,9 +208,13 @@
           <div class="card bg-light">
               <div class="card-body">
                   <!-- Comment form-->
-                  <form class="mb-4">
+                  <form class="mb-4" id="commentFrm" action="travel_info_add.do" method="post">
                   <textarea name="r_content" id="r_content" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
-                   <div style="text-align: right;"><button type="button" class="btn btn-primary" id="commentBtn" name="commentBtn">submit</button></div>
+                   <div style="text-align: right;">
+                   	<button type="button" class="btn btn-primary" id="commentBtn" name="commentBtn">submit</button>
+                   	<input type="hidden" name="id" value="${ MID }"/>
+                   	<input type="hidden" name="tr_num" value="${ travelInfo.tr_num }"/>
+                   </div>
                   </form>
                   
                   <!-- Single comment-->
@@ -224,7 +232,6 @@
 	                 </div>
 	              </c:forEach>
                   </c:if>
-                  
                   
                   
               </div>

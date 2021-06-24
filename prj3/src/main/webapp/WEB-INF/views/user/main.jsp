@@ -35,19 +35,25 @@
         });
         
         $("#btnGO").click(function() {
-        	if($("#select option:selected").val() =="none" && $("#name").val() != "") {
-        		alert("지역이나 이름을 선택해 주세요.");
-        		return;
-        	}
-
-        	if(($("#select option:selected").val() =="travel_area" && $("#name").val() == "") ||
-        			($("#select option:selected").val() =="travel_name" && $("#name").val() == "")) {
-        		alert("검색어를 입력해주세요.");
-        		return;
-        	}
+        	check();
         	$("#contactForm").submit();
         })
+        
       });
+
+function check() {
+	if($("#select option:selected").val() =="none" && $("#name").val() != "") {
+		alert("지역이나 이름을 선택해 주세요.");
+		return;
+	}
+
+	if(($("#select option:selected").val() =="travel_area" && $("#name").val() == "") ||
+			($("#select option:selected").val() =="travel_name" && $("#name").val() == "")) {
+		alert("검색어를 입력해주세요.");
+		return;
+	}
+}
+      
     </script>
         
     </head>
