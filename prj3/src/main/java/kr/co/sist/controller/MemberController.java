@@ -7,8 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.sist.service.MemberService;
@@ -17,6 +17,7 @@ import kr.co.sist.vo.MemberVO;
 import kr.co.sist.vo.MyInfoVO;
 
 @Controller
+@SessionAttributes({"MID"})
 public class MemberController {
 	
 	@RequestMapping(value = "/user/loginForm.do")
