@@ -34,14 +34,13 @@
 	<link href = "http://localhost/prj3/common/startbootstrap/css/sb-admin-2.min.css" rel="stylesheet">
 	
 <style type = "text/css">
-
 </style>
-
 <script type="text/javascript">
 
 </script>
 </head>
 <body>
+
 <div class = "container_1">
 
 	<div id = "left_bar" style = "height : 800px; margin-top: 100px; margin-right: 30px;">
@@ -51,9 +50,9 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light"><span style = "font-size: 20px;">ADMIN</span></div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">관광관리</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashBoard.do">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="03_travelManage.do">관광관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="10_memberList.do">회원관리</a>
                     <div style = "height : 200px;"></div>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">
                    <span style = "font-size: 12px;">관리자 로그아웃</span></a>

@@ -11,15 +11,15 @@ public class DashBoardController {
 
 	// AdminLoginController에서 전부 받음 
 	
-//	@RequestMapping(value = "/admin/adminMain.do",method = RequestMethod.GET)
-//	public String dashBoardForm(Model model) {
-//		DashBoardService ds=DashBoardService.getInstance();
-//		model.addAttribute("member",ds.searchTotalMember());
-//		model.addAttribute("comment",ds.searchMonthComment());
-//		model.addAttribute("booking",ds.searchMonthBookingTour());
-//		
-//		return"admin/02_adminMain";
-//	}//dashBoardForm
+	@RequestMapping(value = "/admin/dashBoard.do",method = RequestMethod.GET)
+	public String dashBoardForm(Model model) {
+		DashBoardService ds=DashBoardService.getInstance();
+		model.addAttribute("member",ds.searchTotalMember());
+		model.addAttribute("comment",ds.searchMonthComment());
+		model.addAttribute("booking",ds.searchMonthBookingTour());
+		
+		return"admin/02_adminMain";
+	}//dashBoardForm
 	
 	
 }

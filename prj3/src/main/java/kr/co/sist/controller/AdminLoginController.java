@@ -31,7 +31,7 @@ public class AdminLoginController {
 	/**
 	 * ·Î±×ÀÎ
 	 */
-	@RequestMapping(value = "/admin/adminMain.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/adminMain.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public String adminLoginProcess(adminLoginVO alVO,Model model,HttpSession session)  { 
 		
 		AdminLoginService als=AdminLoginService.getInstance();
