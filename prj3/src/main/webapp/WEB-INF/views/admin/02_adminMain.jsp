@@ -34,6 +34,14 @@
 	<link href = "http://localhost/prj3/common/startbootstrap/css/sb-admin-2.min.css" rel="stylesheet">
 	
 <style type = "text/css">
+.card-body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.card-body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
 </style>
 <script type="text/javascript">
 
@@ -99,49 +107,56 @@
                  <!-- Content Column -->
                  <div class="content_column" style = "width : 500px; margin-left: 30px;">
 
+	
+
                      <!-- Project Card Example -->
                      <div class="card shadow mb-4"  style = "width : 500px; height : 400px;">
                          <div class="card-header py-3"  style = "width : 500px; height : 60px; ">
                              <h6 class="m-0 font-weight-bold text-primary" style = "font-size: 25px; margin : auto;">월간 Top3</h6>
                          </div>
+                         
+                         <c:forEach var="like" items="${ like }">
+                         	
+                         </c:forEach>
+                         
                          <div class="card-body"  style = "width : 500px;">
-                             <h4 class="small font-weight-bold" style = "font-size: 15px;">좋아요 Top 1<span
-                                     class="float-right">60%</span></h4>
+                             <h4 class="small font-weight-bold" style = "font-size: 15px;">좋아요 Top 1 : <c:out value="${ like[0].tr_name }"/><span
+                                     class="float-right"> ♥ <c:out value="${ like[0].like_cnt }"/> </span></h4>
                              <div class="progress mb-4">
-                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 60%"
-                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                 <div class="progress-bar bg-danger" role="progressbar" style="width:<c:out value="${ like[0].like_cnt }"/>%"
+                                     aria-valuenow="<c:out value="${ like[0].like_cnt }"/>" aria-valuemin="0" aria-valuemax="100"></div>
                              </div>
-                             <h4 class="small font-weight-bold" style = "font-size: 15px;">리뷰수<span
-                                     class="float-right">40%</span></h4>
+                             <h4 class="small font-weight-bold" style = "font-size: 15px;">리뷰수  Top 1 : <c:out value="${ review[0].tr_name }"/><span
+                                     class="float-right">　<c:out value="${ review[0].review_num }"/></span></h4>
                              <div class="progress mb-4">
-                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                 <div class="progress-bar bg-danger" role="progressbar" style="width: <c:out value="${ review[0].review_num }"/>%"
                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                              </div>
                              
-                             <h4 class="small font-weight-bold"style = "font-size: 15px;">좋아요 Top 2<span
-                                     class="float-right">60%</span></h4>
+                             <h4 class="small font-weight-bold"style = "font-size: 15px;">좋아요 Top 2 : <c:out value="${ like[1].tr_name }"/><span
+                                     class="float-right"> ♥ <c:out value="${ like[1].like_cnt }"/> </span></h4>
                              <div class="progress mb-4">
-                                 <div class="progress-bar" role="progressbar" style="width: 60%"
-                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                 <div class="progress-bar" role="progressbar" style="width: <c:out value="${ like[1].like_cnt }"/>%"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                              </div>
-                             <h4 class="small font-weight-bold"style = "font-size: 15px;">리뷰수 <span
-                                     class="float-right">80%</span></h4>
+                             <h4 class="small font-weight-bold"style = "font-size: 15px;">리뷰수 Top 2 : <c:out value="${ review[1].tr_name }"/><span
+                                     class="float-right">　<c:out value="${ review[1].review_num }"/></span></h4>
                              <div class="progress mb-4">
-                                 <div class="progress-bar" role="progressbar" style="width: 60%"
-                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                 <div class="progress-bar" role="progressbar" style="width:<c:out value="${ review[1].review_num }"/>%"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                              </div>
                              
-                             <h4 class="small font-weight-bold"style = "font-size: 15px;">좋아요 Top 3 <span
-                                     class="float-right">Complete!</span></h4>
+                             <h4 class="small font-weight-bold"style = "font-size: 15px;">좋아요 Top 3 : <c:out value="${ like[2].tr_name }"/><span
+                                     class="float-right"> ♥ <c:out value="${ like[2].like_cnt }"/> </span></h4>
                              <div class="progress">
-                                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                 <div class="progress-bar bg-success" role="progressbar" style="width: <c:out value="${ like[2].like_cnt }"/>%"
                                      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                              </div>
-                             <h4 class="small font-weight-bold"style = "font-size: 15px;">리뷰수 <span
-                                     class="float-right">Complete!</span></h4>
+                             <h4 class="small font-weight-bold"style = "font-size: 15px;">리뷰수 Top 3 : <c:out value="${ review[2].tr_name }"/><span
+                                     class="float-right">　<c:out value="${ review[2].review_num }"/></span></h4>
                              <div class="progress">
-                                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                 <div class="progress-bar bg-success" role="progressbar" style="width:<c:out value="${ review[2].review_num }"/>%"
+                                     aria-valuenow="<c:out value="${ review[2].review_num }"/>" aria-valuemin="0" aria-valuemax="100"></div>
                              </div>
                          </div>
                      </div>
@@ -200,7 +215,7 @@
                                 <div class="card-body">
                                     <div class="">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style = "font-size: 15px;">리뷰수(Monthly)
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1" style = "font-size: 15px;">리뷰수<br>(Monthly)
                                             </div>
                                             <div class="">
                                                 <div class="col-auto">
@@ -222,8 +237,8 @@
                                     <div class="">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style = "font-size: 15px;">
-                                               총수입 (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style = "font-size: 18px;">18</div>
+                                               총수입 <br>(Monthly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style = "font-size: 18px;"><c:out value="${ Price }"/> 원</div>
                                         </div>
                                     </div>
                                 </div>

@@ -24,8 +24,36 @@
 	where B_DATE between TRUNC (SYSDATE, 'MONTH') and TRUNC (LAST_DAY (SYSDATE))
  </select>
 
- <!-- 월별 수입  -->
-
+ <!-- 총 수입  -->
+ 
+  <select id="selectMonthPrice" resultType="int">
+	select sum(to_price) to_price
+	from tour t,booking b
+	where t.to_num=b.to_num
+ </select>
+ 
  <!-- 좋아요  -->
+   <select id="selectPopularLike" resultType="kr.co.sist.domain.PopularLikeDomain">
+	<![CDATA[
+	select tr_name ,like_cnt
+	from(select tr_name,like_cnt
+	from  travel
+	order by like_cnt desc)
+	where rownum   <  = 3
+	]]>
+ 	</select>
+ 
+   <select id="selectPopularReview" resultType="kr.co.sist.domain.PopularReviewDomain">
+	<![CDATA[
+	select TR_NAME,REVIEW_NUM
+	from (select TR_NAME,COUNT(*) REVIEW_NUM
+	from travel t, review r
+	where t.tr_num=r.tr_num
+	group by TR_NAME
+	HAVING COUNT(*)>=0
+	order by COUNT(*) desc)
+	where rownum <= 3
+	]]>
+ 	</select>
 
 </mapper>

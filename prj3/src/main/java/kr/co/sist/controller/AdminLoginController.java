@@ -49,6 +49,9 @@ public class AdminLoginController {
 		model.addAttribute("member",ds.searchTotalMember()); //총 회원 수
 		model.addAttribute("comment",ds.searchMonthComment());//이번달 리뷰 수
 		model.addAttribute("booking",ds.searchMonthBookingTour());//이번달 예약 수
+		model.addAttribute("Price",ds.searchMonthPrice()); //총 수입 
+		model.addAttribute("like",ds.searchPopularLike()); // 좋아요 3TOP
+		model.addAttribute("review",ds.searchPopularReview());//리뷰 3TOP
 		
 		return"admin/02_adminMain";
 	}//adminLoginProcess

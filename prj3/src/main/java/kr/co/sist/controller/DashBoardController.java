@@ -17,6 +17,9 @@ public class DashBoardController {
 		model.addAttribute("member",ds.searchTotalMember());
 		model.addAttribute("comment",ds.searchMonthComment());
 		model.addAttribute("booking",ds.searchMonthBookingTour());
+		model.addAttribute("Price",ds.searchMonthPrice());
+		model.addAttribute("like",ds.searchPopularLike());
+		model.addAttribute("review",ds.searchPopularReview());
 		
 		return"admin/02_adminMain";
 	}//dashBoardForm
