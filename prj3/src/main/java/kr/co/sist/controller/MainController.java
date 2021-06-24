@@ -79,7 +79,7 @@ public class MainController {
 		
 		MainService ms = new MainService();
 		String select = spVO.getSelect();
-		
+		System.out.println(select);
 		List<SearchTravelDomain> stdList = null;
 		
 		if (select.equals("none")) {

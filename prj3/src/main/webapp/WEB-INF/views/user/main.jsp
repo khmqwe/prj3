@@ -39,6 +39,12 @@
         		alert("지역이나 이름을 선택해 주세요.");
         		return;
         	}
+
+        	if(($("#select option:selected").val() =="travel_area" && $("#name").val() == "") ||
+        			($("#select option:selected").val() =="travel_name" && $("#name").val() == "")) {
+        		alert("검색어를 입력해주세요.");
+        		return;
+        	}
         	$("#contactForm").submit();
         })
       });
@@ -52,7 +58,7 @@
         <header class="masthead">
             <div class="container">
                 <div class="masthead-subheading">Welcome!</div>
-                <form id="contactForm" name="contactForm" action="user/travel_list.do">
+                <form id="contactForm" name="contactForm" action="http://localhost/prj3/user/travel_list.do">
                 <input type="hidden" name="curPage" value="1"/>
                  <div class="row">
                   <div class="col-md-2" style="text-align: right;">
