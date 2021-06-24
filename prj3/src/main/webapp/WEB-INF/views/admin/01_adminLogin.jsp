@@ -58,13 +58,14 @@ function chkNull() {
 <body>
 <div class = "container_1">
 	<div class = "log_in">
-<form action="" method="post" id="adFrm"></form>	
+	<form action="adminMain.do" method="post" id="adFrm">
 		<h1 style= "font-weight: bold; text-align: center;">관리자 로그인</h1><br/><br/>
 		아이디<br/>
-		 <input type="text" class="inputBox" name= "id" id= "id" /><br/>
+		 <input type="text" class="inputBox" name="ad_id" id="ad_id" /><br/>
 		비밀번호 <br/>
-		 <input type="password" class="inputBox" name= "password" id= "password"/><br/>
+		 <input type="password" class="inputBox" name="ad_pass" id= "ad_pass"/><br/>
 		<input type = "button" class = "btn btn-primary" value = "로그인" id="btnLogin" style = "height : 50px; width : 300px; margin-top: 20px; font-size: 20px; border-radius: 10px;" />
+	</form>	
 	</div>
 	
 </nav>

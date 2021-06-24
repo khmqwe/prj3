@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +55,7 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">관광관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">회원관리</a>
                     <div style = "height : 200px;"></div>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">
                    <span style = "font-size: 12px;">관리자 로그아웃</span></a>
                 </div>
             </div>
@@ -63,18 +64,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-            
 	</div>
-	
 	
 	<div class = "right_bar" style = "margin-left: 30px; width : 1200px; ">
 		<div style = "margin-top: 20px; margin-left: 20px; "><h1 style= "font-weight: bold; float : left; color : black; font-size : 30px; ">DashBoard</h1></div>
 		
-	  
-
 		<div id = "identity" style = "float : right ; width : 150px;">
 			<div style = "float : left ;"><span class="glyphicon glyphicon-user" aria-hidden="true" id = "graphic" style = "width : 30%"></span></div>
-			<div style = "float : left ;"><h4 style = "float : right ; width:80px; margin-top: 10px;">송준희님</h4></div>
+			<div style = "float : left ;"><h4 style = "float : right ; width:80px; margin-top: 10px;">${ name }님</h4></div>
 		</div>
 		
 		<div style = "height : 100px;"></div>
@@ -171,7 +168,9 @@
                                         <div class="col mr-2" >
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style = "font-size: 15px;">
                                                 회원수<br/>(Total)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style = "font-size: 18px;" >$40,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style = "font-size: 18px;" >
+                                            <c:out value="${ member }"/> 명
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +185,9 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style = "font-size: 15px;">
                                                 예약된 투어 수 (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style = "font-size: 18px;">$215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style = "font-size: 18px;">
+                                             <c:out value="${ booking }"/>건
+                                             </div>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +205,9 @@
                                             </div>
                                             <div class="">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" style = "font-size: 18px;">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" style = "font-size: 18px;">
+                                                    <c:out value="${ comment }"/>건
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
