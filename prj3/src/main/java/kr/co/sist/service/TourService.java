@@ -32,10 +32,10 @@ public class TourService {
 		 
 	 }//searchCurBNum
 	
-	 public List<BookingDomain> searchTourBookingList(){ 
+	 public List<BookingDomain> searchTourBookingList(String m_id){ 
 		 
 		 TourDAO tDAO = TourDAO.getInstance(); 
-		 List<BookingDomain> bdm =tDAO.selectTourBookingList();
+		 List<BookingDomain> bdm =tDAO.selectTourBookingList(m_id);
 		 return bdm;
 		 
 	 }//searchTourBookingList

@@ -1,12 +1,20 @@
 package kr.co.sist.domain;
 
 public class BookingDomain {
+	
 	private String to_name;
 	private String thumb_img;
 	private int b_num;
 	private String b_due_date;
 	private String r_num;
+	private String m_id;
 	
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
 	public String getTo_name() {
 		return to_name;
 	}

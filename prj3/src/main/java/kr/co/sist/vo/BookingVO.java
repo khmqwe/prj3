@@ -38,5 +38,10 @@ public class BookingVO {
 	public void setR_num(String r_num) {
 		this.r_num = r_num;
 	}
+	@Override
+	public String toString() {
+		return "BookingVO [b_num=" + b_num + ", bookingDate=" + bookingDate + ", tourNum=" + tourNum + ", m_id=" + m_id
+				+ ", r_num=" + r_num + "]";
+	}
 	
 }

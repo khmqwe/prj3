@@ -30,7 +30,7 @@ public class MemberController {
 		MemberService ms = new MemberService();
 		String result =ms.loginCheck(lVO);
 		if(result != null) {
-			model.addAttribute("MID",result);
+			model.addAttribute("MID",result);//예약을 클릭하는 jsp페이지
 			return "forward:../index.do";
 		}else {
 			return "redirect:http://localhost/prj3/user/loginForm.do";

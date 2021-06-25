@@ -26,11 +26,10 @@ where 	(t.la_num = l.la_num) and to_num = #{to_num}
  
  </select>
  
-  <select id = "selectBooking" resultType="kr.co.sist.domain.BookingDomain">
-	select 		to_name, thumb_img, to_char(b_date, 'YYYY-MM-DD') as b_due_date, b_num, b.r_num
+  <select id = "selectBooking" resultType="kr.co.sist.domain.BookingDomain" parameterType="String">
+	select 		to_name, thumb_img, to_char(b_date, 'YYYY-MM-DD') as b_due_date, b_num, b.r_num , b.m_id
 	 from			booking b, tour t , member m
-	 where 		(m.m_id = b.m_id) and (t.to_num = b.to_num)
- 
+	 where 		(m.m_id=b.m_id) and  (t.to_num = b.to_num) and (m.M_ID = #{m_id})
  </select>
  
   <delete id= "deleteTourBooking" parameterType="Integer">

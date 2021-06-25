@@ -77,13 +77,13 @@ public class TourDAO {
 			return cnt;
 	 }//selectCurBNum
 	 
-	  public List<BookingDomain> selectTourBookingList(){ 
+	  public List<BookingDomain> selectTourBookingList(String m_id){ 
 		  SqlSession ss = MyBatisHandler.getInstance().getHandler();
 	 
 		  List<BookingDomain> bdList = null;
 	
-		  bdList = ss.selectList("kr.co.sist.tourMapper.selectBooking");
-		
+		  bdList = ss.selectList("kr.co.sist.tourMapper.selectBooking",m_id); 
+		  
 		 if (ss != null) {ss.close();}
 		 
 		 return bdList;
