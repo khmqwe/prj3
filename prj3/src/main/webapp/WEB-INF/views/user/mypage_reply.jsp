@@ -91,9 +91,6 @@ function goModal(r_num, r_content) {
 	flag=true;
 }
 
-function frmSubmit() {
-	$("#modifyFrm").submit();
-}
 
 $(function() {
 	$(".modal").css('display', 'none');
@@ -114,18 +111,18 @@ $(function() {
 
 <jsp:include page="header_login.jsp"/>  
 
+<form action="http://localhost/prj3/user/comment_modify.do" method="post" id="modifyFrm">
 <div class="modal">
 	<div class="modal__overlay"></div>
 	<div class="modal__content">
 		<h2 id="modal_title">모달창</h2>
-		<form action="http://localhost/prj3/user/comment_modify.do" method="post" id="modifyFrm">
 		<textarea rows="5" cols="40" style="resize: none; padding: 10px;" id="txt" name="r_content"></textarea>
 		<input type="hidden" id="r_num" name="r_num" value=""/>
-		<button id="btn_modify" class="btn btn-primary button" onclick="frmSubmit()">수정</button>
-		<button id="btn_cancel" class="btn btn-secondary button">닫기</button>
-		</form>
+		<button id="btn_modify" class="btn btn-primary button">수정</button>
+		<input type="button" id="btn_cancel" class="btn btn-secondary button" value="닫기"/>
 	</div>
 </div>
+</form>
 
 <div class="main-content">
 
@@ -142,8 +139,12 @@ $(function() {
 			<div class="reply_text" style="padding-left: 10px;">${ comment.r_content }</div>
 		</div>
 		<div>
-			<div class="reply_btn_mod"><button type="button" class="btn btn-primary btn-sm" onclick="goModal(${ comment.r_num }, '${ comment.r_content }')">수정</button></div>
-			<div class="reply_btn_del"><button type="button" id="cancelBtn" class="btn btn-secondary btn-sm cancelBtn" onclick="checkDelete(${comment.r_num})">삭제</button></div>
+			<div class="reply_btn_mod">
+			<button type="button" class="btn btn-primary btn-sm" onclick="goModal(${ comment.r_num }, '${ comment.r_content }')">수정</button>
+			</div>
+			<div class="reply_btn_del">
+			<button type="button" id="cancelBtn" class="btn btn-secondary btn-sm cancelBtn" onclick="checkDelete(${comment.r_num})">삭제</button>
+			</div>
 		</div>
 	</div>	
 	</c:forEach>
