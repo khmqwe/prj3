@@ -8,5 +8,30 @@
 		insert into review(r_num, r_content, r_date, m_id, tr_num)
 		values(seq_re.nextval, #{r_content}, to_char(sysdate,'yyyy-mm-dd'), #{id}, #{tr_num})
 	</insert>
+	
+	<select id="selectCommentCnt" resultType="int" parameterType="String">
+		select count(*)
+		from review
+		where m_id=#{m_id}
+	</select>
+	
+	<select id="selectComment" resultType="kr.co.sist.domain.MyCommentDomain" parameterType="kr.co.sist.vo.CommentPageVO">
+		select    	r_num, r_content, r_date, tr_name, thumb_img, rnum
+		from		(select 	r_num, r_content, to_char(r_date, 'yyyy-mm-dd') r_date, tr_name, thumb_img, row_number() over(order by r_date desc) rnum
+					from 		review r, travel t
+					where   (t.tr_num = r.tr_num) and m_id=#{id})
+		where		rnum between #{startNum} and #{endNum}
+	</select>
+	
+	<delete id="deleteComment" parameterType="int">
+		delete from review
+		where r_num=#{r_num}
+	</delete>
+	
+	<update id="updateComment" parameterType="kr.co.sist.vo.ModifyCommentVO">
+		update	review
+		set r_content=#{r_content}
+		where r_num=#{r_num}
+	</update>
   
 </mapper>

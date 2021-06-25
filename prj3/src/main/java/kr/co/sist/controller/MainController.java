@@ -84,7 +84,8 @@ public class MainController {
 		List<SearchTravelDomain> stdList = null;
 		
 		if (select.equals("none") && !spVO.getName().equals("")) {
-			stdList = ms.searchSearchedPlace(2, spVO.getName());
+			stdList = ms.searchSearchedPlace(3, spVO.getName());
+			System.out.println(spVO.getName());
 		} else if (select.equals("none")) {
 			stdList = ms.searchSearchedPlace(1, spVO.getName());
 		} else if (select.equals("travel_area")) {
