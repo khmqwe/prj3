@@ -10,7 +10,7 @@
 			location.replace("http://localhost/prj3/user/logOutProcess.do")
 			alert("로그아웃을 완료하였습니다.")
 		});
-	});//ready
+	});//ready  
     </script>
      <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
