@@ -1,7 +1,7 @@
 package kr.co.sist.domain;
 
 public class BookingDomain {
-	
+	   
 	private String to_name;
 	private String thumb_img;
 	private int b_num;

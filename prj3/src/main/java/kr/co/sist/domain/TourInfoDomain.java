@@ -13,7 +13,7 @@ public class TourInfoDomain {
 	private String to_price;
 	private String to_date;
 	private String la_name;
-	
+	  
 	public int getTo_num() {  
 		return to_num;
 	}

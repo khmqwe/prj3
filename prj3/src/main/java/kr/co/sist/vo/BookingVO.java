@@ -10,7 +10,7 @@ public class BookingVO {
 	
 	public int getB_num() {
 		return b_num;
-	}
+	}  
 	public void setB_num(int b_num) {
 		this.b_num = b_num;
 	}

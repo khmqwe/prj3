@@ -39,9 +39,7 @@ public class TourController {
 		  if(id !=null) {
 			  TourService ts = new TourService();
 			  
-			  
 			  bVO.setM_id(id);
-			  System.out.println("---------bVO is--------------"+ bVO);//
 			  ts.addBooking(bVO);
 			  resultMsg = "success";
 		  }
@@ -58,7 +56,6 @@ public class TourController {
 		  
 		  String id=(String) hs.getAttribute("MID"); //아이디가져오기
 		  model.addAttribute("m_id",id);
-		  System.out.println( "----예약폼 id is------------>"+id);//실행해보세요
 			if(id==null) {
 				return "user/login"; 
 			}
