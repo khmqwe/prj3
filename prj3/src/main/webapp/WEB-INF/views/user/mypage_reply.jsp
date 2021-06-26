@@ -115,7 +115,7 @@ $(function() {
 <div class="modal">
 	<div class="modal__overlay"></div>
 	<div class="modal__content">
-		<h2 id="modal_title">모달창</h2>
+		<h2 id="modal_title">리뷰 수정</h2>
 		<textarea rows="5" cols="40" style="resize: none; padding: 10px;" id="txt" name="r_content"></textarea>
 		<input type="hidden" id="r_num" name="r_num" value=""/>
 		<button id="btn_modify" class="btn btn-primary button">수정</button>

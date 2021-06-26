@@ -71,41 +71,6 @@
 	</div>
 	</c:forEach>
 	
-	<!-- 
-	<div class="tour_content">
-		<div style="display: inline-block;">  <img class="card-img-top" src="https://dummyimage.com/300x200/dee2e6/6c757d.jpg" alt="..." /></div>
-		<div class="tour_info">
-		<h4>서울경복궁투어</h4>
-		<span>
-		대중평화스러운 곳으로 인도하겠다는 커다란 행복스럽고 평화스러운 곳으로 인도하겠다는 커다란 이상을 품었기 때문이다</span>
-		<h6>예약날짜:</h6>
-		<h6>예약번호:</h6>
-		<div class="tour_del"><button type="button" class="btn btn-warning">예약취소</button></div>
-		</div>
-	</div> -->
-	<!-- pagination -->
-<div class="content-box" style="text-align: center;"> 
-<nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-</div>	
-	<!-- pagination끝 -->	
 </div>
 </div>
 <jsp:include page="footer.jsp"/>  

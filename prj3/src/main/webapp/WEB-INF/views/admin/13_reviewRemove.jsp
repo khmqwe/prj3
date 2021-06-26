@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:if test="${ empty sessionScope.id }">
+	<c:redirect url="http://localhost/prj3/admin/admin_login.do"/>
+</c:if>
 <html>
 <head>
 <meta charset="UTF-8">

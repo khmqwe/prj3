@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
+<c:if test="${ empty sessionScope.id }">
+	<c:redirect url="http://localhost/prj3/admin/admin_login.do"/>
+</c:if>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -62,6 +65,12 @@ $(function() {
 	  $('.note-statusbar').hide();
 	  
 	  $("#selectLang").val("${aitd.la_num}").prop("selected", true);
+	  
+	  $("#insert").click(function() {
+		  
+		  $("#pFrm").submit();
+		  
+	  })
 	});
 </script>
 </head>
@@ -87,13 +96,14 @@ $(function() {
             
 	</div>
 	<div class = "right_bar" style = "height:1300px;">
-		<form action="" method="post" id="pFrm" enctype="multipart/form-data" > 
+		<form action="http://localhost/prj3/admin/08_tourRevise_modify.do" method="post" id="pFrm" enctype="multipart/form-data" > 
 		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 10px;">투어 수정</h1></div>
-		
-		
+		<input type="hidden" value="${ param.to_num }" name="to_num">
+		<input type="hidden" value="${ param.tr_num }" name="tr_num">
+
 		<div id = "contents_08">
 		<div id = "title_bar">
-			<input type = "text" id="tour_title" value="${ aitd.to_name }" placeholder = "제목 : ">
+			<input type = "text" id="tour_title" name="to_name" value="${ aitd.to_name }" placeholder = "제목 : ">
 				
 			</div>
 		<br/><br/>
@@ -105,7 +115,7 @@ $(function() {
 					<tr>
 						<td class = "title_btn" width = 140px>언어</td>
 						<td>
-							<select id="selectLang" style="font-size: 15px;">
+							<select id="selectLang" name="la_num" style="font-size: 15px;">
 								<option value="1">한국어</option>
 								<option value="2">영어</option>
 								<option value="3">일본어</option>
@@ -121,14 +131,14 @@ $(function() {
 					</tr>
 					<tr>
 						<td class = "title_btn" width = 120px>썸네일사진</td>
-						<td style="font-size: 15px;"><input type ="file" id="p_thumb_img"  name="p_thumb_img" class="img_input"></td>
+						<td style="font-size: 15px;"><input type ="file" id="thumb_img"  name="thumb_img" class="img_input"></td>
 					</tr>
 					
 				</table><br/><br/>
 				
 				<div><h2 style = "text-align: left; margin-left: 70px;">Info</h2></div>
 			<div style = "margin-left: 100px; text-align: left;">
-				  <textarea id="summernote" name="editordata">${ aitd.plan_explain }</textarea>
+				  <textarea id="summernote" name="plan_explain">${ aitd.plan_explain }</textarea>
 			</div>
 				
 			<div><br/>
@@ -136,7 +146,7 @@ $(function() {
 			<table border = "1" cellspacing = "0" bordercolor = "#B4B4B4" style = "width : 700px ; height : 100px ; margin: auto ">
 				<tr>
 					<td class = "info_title">집합시간</td>
-					<td><input type = "time" class = "text_info" value="${ aitd.to_meeting_time }"></td>
+					<td><input type = "time" class = "text_info" id="to_meeting_time" name="to_meeting_time" value="${ aitd.to_meeting_time }"></td>
 				</tr>
 				<tr>
 					<td  class = "info_title">집합장소</td>
@@ -163,10 +173,9 @@ $(function() {
 		<br/>
 		
 		<div id="buttons" >
-			<a href = "http://localhost/prj3/admin/07_tourManage.jsp">
 			<input type = "button" id="insert"  name="insert"  class = "btn btn-primary" value = "수정" 
-			style="width:80px;height:40px; font-weight:bold; font-size: 15px;"></a>
-			<a href = "http://localhost/prj3/admin/07_tourManage.jsp">
+			style="width:80px;height:40px; font-weight:bold; font-size: 15px;">
+			<a href = "http://localhost/prj3/admin/07_tourManage.do?tr_num=${ param.tr_num }">
 			<input type = "button" class = "btn btn-default" value = "취소"  style = "border: 0.5px solid #dfdfdf; font-size: 15px;">
 			</a>
 		</div><br/>

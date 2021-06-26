@@ -6,6 +6,8 @@ import kr.co.sist.dao.AdminTourDAO;
 import kr.co.sist.domain.AdminInfoTourDomain;
 import kr.co.sist.domain.AdminTourDomain;
 import kr.co.sist.vo.AdminTourPageVO;
+import kr.co.sist.vo.InfoTourModifyVO;
+import kr.co.sist.vo.InfoTourVO;
 import kr.co.sist.vo.PageVO;
 
 public class AdminTourService {
@@ -33,5 +35,21 @@ public class AdminTourService {
 		AdminInfoTourDomain aitd = atDAO.selectTourDetail(to_num);
 		
 		return aitd;
+	}
+	
+	public int addTourInfo(InfoTourVO itVO) {
+		
+		AdminTourDAO atDAO = AdminTourDAO.getInstance();
+		int result = atDAO.insertTourInfo(itVO);
+		
+		return result;
+	}
+	
+	public int modifyTourInfo(InfoTourModifyVO itmVO) {
+		
+		AdminTourDAO atDAO = AdminTourDAO.getInstance();
+		int result = atDAO.updateTourInfo(itmVO);
+		
+		return result;
 	}
 }

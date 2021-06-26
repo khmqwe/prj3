@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import kr.co.sist.domain.AdminInfoTourDomain;
 import kr.co.sist.domain.AdminTourDomain;
 import kr.co.sist.vo.AdminTourPageVO;
+import kr.co.sist.vo.InfoTourModifyVO;
+import kr.co.sist.vo.InfoTourVO;
 import kr.co.sist.vo.PageVO;
 
 public class AdminTourDAO {
@@ -59,5 +61,33 @@ public class AdminTourDAO {
 		if (ss != null) { ss.close(); }
 		
 		return aitd;
+	}
+	
+	public int insertTourInfo(InfoTourVO itVO) {
+		
+		SqlSession ss = MyBatisHandler.getInstance().getHandler();
+		int result = ss.insert("kr.co.sist.adminTourMapper.insertTourInfo", itVO);
+		
+		if (result == 1) {
+			ss.commit();
+		}
+		
+		if (ss != null) { ss.close(); }
+		
+		return result;
+	}
+	
+	public int updateTourInfo(InfoTourModifyVO itmVO) {
+		
+		SqlSession ss = MyBatisHandler.getInstance().getHandler();
+		int result = ss.update("kr.co.sist.adminTourMapper.updateTour", itmVO);
+		
+		if (result == 1) {
+			ss.commit();
+		}
+		
+		if (ss != null) { ss.close(); }
+		
+		return result;
 	}
 }

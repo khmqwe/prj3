@@ -68,7 +68,7 @@
 	
 	<div class = "right_bar">
 		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 20px;">투어관리</h1></div>
-		<div><a href = "http://localhost/prj3/admin/09_newTour.do"> 
+		<div><a href = "http://localhost/prj3/admin/09_newTour.do?tr_num=${ param.tr_num }"> 
 		<input type="button"  value = "새 투어 등록" id = "newWrite" class = "btn btn-default"/></a></div>
 		
 		<div class = "table">
@@ -89,7 +89,7 @@
 				<td><c:out value="${ atd.to_name }"/></td>
 				<td><c:out value="${ atd.a_name }"/></td>
 				<td><c:out value="${ atd.to_date }"/></td>
-				<td><a href="http://localhost/prj3/admin/08_tourRevise.do?to_num=${ atd.to_num }"><input type = "button" value = "수정" class = "btn btn-primary"></a></td>
+				<td><a href="http://localhost/prj3/admin/08_tourRevise.do?to_num=${ atd.to_num }&tr_num=${ param.tr_num }"><input type = "button" value = "수정" class = "btn btn-primary"></a></td>
 			</tr>
 			</c:forEach>
 			
