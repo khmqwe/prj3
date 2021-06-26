@@ -25,7 +25,7 @@
         <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
-<jsp:include page="header.jsp"/>  
+<jsp:include page="header.jsp"/>
 <div class="main-content">
 <div class="content-box">
 <div class="mypage_title"><h2>내정보 수정</h2></div>
@@ -36,7 +36,7 @@
 					<strong>정보가 성공적으로 수정되었습니다.</strong>
 				</h2>
 				
-				<br> <a id="loginBtn" class="btn btn-primary" >확인</a>
+				<br> <a id="loginBtn" class="btn btn-primary" href="http://localhost/prj3/index.do">확인</a>
 			</div>
 
 

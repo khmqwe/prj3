@@ -26,9 +26,9 @@
                         <li class="nav-item dropdown">
                             <a  class="btn btn-light" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">마이페이지</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" id ="checkPassForm"  onclick="checkPassForm();">내 정보 변경</a></li>
+                                <li><a class="dropdown-item" id ="checkPassForm"  onclick="checkPassForm();" style="cursor: pointer;">내 정보 변경</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a a href="http://localhost/prj3/user/mypage_tour.do" class="dropdown-item" >예약한 투어</a></li>
+                                <li><a href="http://localhost/prj3/user/mypage_tour.do" class="dropdown-item" >예약한 투어</a></li>
                                 <li><a href="http://localhost/prj3/user/mypage_reply.do" class="dropdown-item" style="cursor: pointer;">내가 쓴 리뷰</a></li>
                             </ul>
                         </li> <li class="nav-item">

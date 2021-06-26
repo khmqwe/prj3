@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,33 +22,44 @@
  #wrap{text-align: center; border:1px solid #333; width:400px;height:250px;padding:20px; margin:15px auto }
  .use{font-size: 14px; color:#fff; background-color:#333; width:100px; height:27px; font-weight:bold;}
 </style>
+
+
+
 <script type="text/javascript">
  function successPass(){
-	opener.document.getElementById("newPass1").value = document.getElementById("newPass1").value;
-	self.close(); 
+	 
+	if ($("#newPass1").val() == "") {
+		alert("비밀번호 입력란이 비어있습니다.");
+		$("#newPass1").focus();
+	}  else if ($("#newPass2").val() == "") {
+		alert("비밀번호 입력란이 비어있습니다.");
+		$("#newPass2").focus();
+	} else if ($("#newPass1").val() != $("#newPass2").val()) {
+		alert("비밀번호가 다릅니다.");
+	} else {
+		alert("변경되었습니다.");
+		$("#passfrm").submit();
+	}
 }
-$(function() { 
-    //버튼 기능
-	 $("#success").click(function(){ 
-		 window.open("idDupForm.do","id_pop","width=500px,height=300px");
-	});		
-   	 $("#sign_button").click(function(){ 
-     		chkNull();
-     	});	
+
+$(function() {
+	
+	if ("${ passCheck}" == "true") {
+		self.close();
+	}
+});
+ 
 </script>
 
 </head>
 <body>
 
 <div align="center" id="wrap">
-<form action="modifyPassForm.do" name="passfrm">
+<form action="modifyPassProcess.do" name="passfrm" id ="passfrm" method="post">
 <span class="idtitle"><strong>비밀번호</strong> 변경</span> <br>
 비밀번호를 변경해주세요.<br>
 <table id="tab">
-		<tr>
-			<td><strong>기존 비밀번호</strong></td>
-			<td><input type="password" name="oldPass" id="oldPass"/></td>
-		</tr>
+		
 		<tr>
 			<td><strong>새로운 비밀번호</strong></td>
 			<td><input type="password" name="newPass1" id="newPass1"/></td>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,6 +29,11 @@
 
         $(function() { 
         	$("#changebtn").click(function() {
+        		const tel1 = $("#inputTel1").val();
+        		const tel2 = $("#inputTel2").val();
+        		const tel3 = $("#inputTel3").val();
+        		const telnum = tel1 + "-" + tel2 + "-" + tel3;
+        		$("#m_telnum").val(telnum);
     			$("#updateinfoForm").submit();
     		});
        		//아이디 중복확인 팝업 
@@ -55,6 +61,8 @@
                                     <div class="card-body">
                                     
                                          <form  id="updateinfoForm" action="modMyInfoForm.do" method="POST">
+                                         <input type="hidden" name="m_telnum" id="m_telnum"/> 
+                                         <input type="hidden" name="m_id" value="${ MID }"/> 
 										<div style="text-align: center;">
 										회원정보를 변경할 수 있습니다. 
 										</div><br>		                                        					
@@ -70,12 +78,12 @@
                                         <!-- 이름 입력 -->
                                              <div class="form-group mb-3">
                                                 <label for="inputName">name</label>
-                                                <input class="form-control" id="inPutName" type="text" placeholder="name" value="${m_name}" />
+                                                <input class="form-control" id="inPutName" name="m_name" type="text" placeholder="name" value="${ mid.m_name}" />
                                             </div> 
                                         <!-- 이메일 -->
                                               <div class="form-group mb-3">
                                                 <label for="inputEmail">email</label>
-                                                <input class="form-control" id="inputEmail" type="text" placeholder="Email" value="${email}" />
+                                                <input class="form-control" id="inputEmail" name="m_email" type="text" placeholder="Email" value="${ mid.m_email}" />
                                             </div>                                        
                                         <div class="row">
 										  <div class="col-md-4">

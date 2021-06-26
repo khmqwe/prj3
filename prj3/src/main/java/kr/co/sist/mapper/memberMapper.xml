@@ -24,11 +24,22 @@
 		member(m_id,m_pass,m_name,m_email,m_telnum,m_date)
 		values(#{MID},#{MPASS},#{MNAME},#{MEMAIL},#{MTELNUM1}||'-'||#{MTELNUM2}||'-'||#{MTELNUM3},sysdate)
 </insert>
-<!-- <update id="updateMyInofo" parameterType="kr.co.sist.vo.MyInfoVO">
-		update member set
-		m_name=#{m_name}
-		m_email=#{m_email}
-		m_telnum=#{m_telnum}
+
+<select id="selectMyInfo" parameterType="String" resultType="kr.co.sist.domain.MyInfoDomain">
+	select m_id, m_name, m_email, m_telnum
+	from MEMBER
+	where m_id = #{m_id}
+</select>
+
+<update id="updateMyPass" parameterType="kr.co.sist.vo.LoginVO">
+	update member
+	set m_pass=#{ MPASS }
+	where m_id= #{MID}
+</update>
+
+<update id="updateMyInofo" parameterType="kr.co.sist.vo.MyInfoModifyVO">
+		update member 
+		set m_name=#{m_name}, m_email=#{m_email}, m_telnum=#{m_telnum}
 		where m_id=#{m_id}
-</update> -->
+</update>
 </mapper>

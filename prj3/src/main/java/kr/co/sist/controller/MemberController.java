@@ -3,6 +3,8 @@ package kr.co.sist.controller;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.co.sist.domain.MyInfoDomain;
 import kr.co.sist.service.MemberService;
+import kr.co.sist.util.cipher.DataEncrypt;
 import kr.co.sist.vo.LoginVO;
 import kr.co.sist.vo.MemberVO;
+import kr.co.sist.vo.MyInfoModifyVO;
 import kr.co.sist.vo.MyInfoVO;
 
 @Controller
@@ -96,7 +101,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/user/checkPassProcess.do", method = POST)
-	public String checkPassProcess(HttpSession session,LoginVO lVO) {
+	public String checkPassProcess(HttpSession session,LoginVO lVO, Model model) {
 		MemberService ms = new MemberService();
 		
 		lVO.setMID((String) session.getAttribute("MID"));
@@ -104,20 +109,41 @@ public class MemberController {
 		if(result.equals("null")) {
 			return "user/mypage_passCheck";
 		}else{
+			MyInfoDomain mid = ms.searchMyInfo((String) session.getAttribute("MID"));
+			model.addAttribute("mid", mid);
+			String[] telArr = mid.getM_telnum().split("-");
+			model.addAttribute("telArr", telArr);
 			return "user/myPage_modify_info";
 		}
 	}
 	
-	@RequestMapping(value ="/user/modMyInfoForm.do")
-	public String modMyInfoForm(HttpSession session,String value) {
-		System.out.println("MID="+session.getAttribute("MID"));
+	@RequestMapping(value = "/user/modifyPassProcess.do", method = POST)
+	public String modifyPassProcess(HttpSession session,String newPass1, Model model) {
 		MemberService ms = new MemberService();
-		MyInfoVO miVO = new MyInfoVO();
-		int result=ms.modMyInfo(miVO);
-		if(result==0) {
-			return "user/login";
-		}else{
-			return "user/myPage_modify_info";
+		String id = ((String) session.getAttribute("MID"));
+		String pass = "";
+		LoginVO lVO = new LoginVO();
+		try {
+			pass = DataEncrypt.messageDigest("MD5", newPass1);
+			lVO.setMID(id);
+			lVO.setMPASS(pass);
+			ms.modifyMyPass(lVO);
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
 		}
+		
+		model.addAttribute("passCheck", true);
+		
+		return "forward:modifyPassForm.do";
+	}
+	
+	
+	@RequestMapping(value ="/user/modMyInfoForm.do")
+	public String modMyInfoForm(MyInfoModifyVO mimVO) {
+		MemberService ms = new MemberService();
+		ms.modMyInfo(mimVO);
+		
+		return "user/myPage_modify_success";
 	}
 }

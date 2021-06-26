@@ -2,8 +2,10 @@
 package kr.co.sist.service;
 
 import kr.co.sist.dao.MemberDAO;
+import kr.co.sist.domain.MyInfoDomain;
 import kr.co.sist.vo.LoginVO;
 import kr.co.sist.vo.MemberVO;
+import kr.co.sist.vo.MyInfoModifyVO;
 import kr.co.sist.vo.MyInfoVO;
 public class MemberService {
 	
@@ -34,10 +36,23 @@ public class MemberService {
 		return result;
 	}
 
-	public int modMyInfo(MyInfoVO miVO) {
+	public int modMyInfo(MyInfoModifyVO mimVO) {
 		MemberDAO mDAO = new MemberDAO();
-		int result=mDAO.updateMyInfo(miVO);
+		int result=mDAO.updateMyInfo(mimVO);
 		return result;
 	}
-
+	
+	public MyInfoDomain searchMyInfo(String m_id) {
+		MemberDAO mDAO = new MemberDAO();
+		MyInfoDomain mid = mDAO.selectMyInfo(m_id);
+		return mid;
+	}
+	
+	public int modifyMyPass(LoginVO lVO) {
+		MemberDAO mDAO = new MemberDAO();
+		int result = mDAO.updateMyPass(lVO);
+		
+		return result;
+	}
+ 
 }

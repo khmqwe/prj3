@@ -1,6 +1,8 @@
 package kr.co.sist.controller;
 
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.sist.dao.AdminLoginDAO;
 import kr.co.sist.service.AdminLoginService;
 import kr.co.sist.service.DashBoardService;
+import kr.co.sist.util.cipher.DataEncrypt;
 import kr.co.sist.vo.adminLoginVO;
 
 import org.springframework.ui.Model;
@@ -37,10 +40,19 @@ public class AdminLoginController {
 		AdminLoginService als=AdminLoginService.getInstance();
 		DashBoardService ds=DashBoardService.getInstance();
 		
-		session.setMaxInactiveInterval(600);
-		session.setAttribute("name",als.adminLogin(alVO));//관리자 이름 
-		session.setAttribute("id",alVO.getAd_id()); //관리자 아이디 
-
+		String pass = "";
+		try {
+			pass = DataEncrypt.messageDigest("MD5", alVO.getAd_pass());
+			alVO.setAd_pass(pass);
+			
+			session.setMaxInactiveInterval(600);
+			session.setAttribute("name",als.adminLogin(alVO));//관리자 이름 
+			session.setAttribute("id",alVO.getAd_id()); //관리자 아이디 
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if(session.getAttribute("name")==null) {
 			return "admin/01_adminLogin";	
 		}

@@ -67,9 +67,9 @@ $(function() {
 	  $("#selectLang").val("${aitd.la_num}").prop("selected", true);
 	  
 	  $("#insert").click(function() {
-		  
-		  $("#pFrm").submit();
-		  
+		  if(confirm("수정하시겠습니까?")) {
+			  $("#pFrm").submit();
+		  }
 	  })
 	});
 </script>
