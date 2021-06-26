@@ -21,20 +21,25 @@
  .use{font-size: 14px; color:#fff; background-color:#333; width:100px; height:27px; font-weight:bold;}
 </style>
 <script type="text/javascript">
-function successPass(){
-	
-	//변경 성공하게 추가
-	
-	self.close();  
+ function successPass(){
+	opener.document.getElementById("newPass1").value = document.getElementById("newPass1").value;
+	self.close(); 
 }
-
+$(function() { 
+    //버튼 기능
+	 $("#success").click(function(){ 
+		 window.open("idDupForm.do","id_pop","width=500px,height=300px");
+	});		
+   	 $("#sign_button").click(function(){ 
+     		chkNull();
+     	});	
 </script>
 
 </head>
 <body>
 
 <div align="center" id="wrap">
-<form action="#" name="passfrm">
+<form action="modifyPassForm.do" name="passfrm">
 <span class="idtitle"><strong>비밀번호</strong> 변경</span> <br>
 비밀번호를 변경해주세요.<br>
 <table id="tab">

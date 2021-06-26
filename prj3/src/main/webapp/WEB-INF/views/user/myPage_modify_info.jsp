@@ -32,13 +32,13 @@
     		});
        		//아이디 중복확인 팝업 
        		$("#m_pass").click(function() {
-       			window.open("mypage_modify_pass.jsp","id_pop","width=500px,height=300px");
+       			window.open("modifyPassForm.do","id_pop","width=500px,height=300px");
        		});
         	$("#mainbtn").click(function() {
 				location.replace=history.go(-1);
         	});
        });//ready
-        
+       
         </script>
         
         
@@ -61,39 +61,39 @@
                                         <!-- 아이디 입력 -->
                                              <div class="form-group mb-3">
                                                 <label for="inputName">id</label>
-                                                <span>id1234</span>
+                                                <span>${MID}</span>
                                             </div> 
                                         <!-- 비밀번호 변경 -->
                                              <div class="form-group mb-3">
-                                                <a class="btn btn-primary btn-lg" href="" id="m_pass">비밀번호 변경</a>
+                                                <a class="btn btn-primary btn-lg" href="#" id="m_pass">비밀번호 변경</a>
                                             </div> 
                                         <!-- 이름 입력 -->
                                              <div class="form-group mb-3">
                                                 <label for="inputName">name</label>
-                                                <input class="form-control" id="inPutName" type="text" placeholder="name" value="강인섭"/>
+                                                <input class="form-control" id="inPutName" type="text" placeholder="name" value="${m_name}" />
                                             </div> 
                                         <!-- 이메일 -->
                                               <div class="form-group mb-3">
                                                 <label for="inputEmail">email</label>
-                                                <input class="form-control" id="inputEmail" type="text" placeholder="Email" value="ryeee@naver.com" />
+                                                <input class="form-control" id="inputEmail" type="text" placeholder="Email" value="${email}" />
                                             </div>                                        
                                         <div class="row">
 										  <div class="col-md-4">
 											<div class="form-group mb-3">
                                                 <label for="inputTel">tel</label>
-                                                <input class="form-control" id="inputTel1" type="text" placeholder="" value="010"/>
+                                                <input class="form-control" id="inputTel1" type="text" placeholder="" value="${telArr[0]}"/>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-group mb-3">
                                                 <label for="inputTel">　</label>
-                                                <input class="form-control" id="inputTel2" type="text" placeholder="" value="2336" />
+                                                <input class="form-control" id="inputTel2" type="text" placeholder="" value="${telArr[1]}" />
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-group mb-3">
                                                 <label for="inputTel">　</label>
-                                                <input class="form-control" id="inputTel3" type="text" placeholder="" value="8837"/>
+                                                <input class="form-control" id="inputTel3" type="text" placeholder="" value="${telArr[2]}"/>
                                             </div> 
 										  </div>
 										</div>

@@ -29,6 +29,11 @@
 		$("#submitBtn").click(function() {
 			$("#passCheck").submit();
 		});
+		/* function chkNull(){
+        	if(  $("#passCheck").val()=="" ){
+        		alert("비밀번호를 확인해주세요");
+        		$("#submitBtn").focus();
+        		return; */
 	});//ready
     </script>
     <body id="page-top">

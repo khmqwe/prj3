@@ -11,16 +11,24 @@
  <select id="selectId"   resultType="String">
 		select m_id
 		from member
-		where m_id=#{MID}
+		where m_id=#{MID} 
 </select>
 <select id="selectPass"  resultType="String">
 		select m_pass
 		from member
 		where m_id=#{MID} and m_pass=#{MPASS}
 </select>
+
 <insert id="insertMember" parameterType="kr.co.sist.vo.MemberVO">
 		insert into
 		member(m_id,m_pass,m_name,m_email,m_telnum,m_date)
 		values(#{MID},#{MPASS},#{MNAME},#{MEMAIL},#{MTELNUM1}||'-'||#{MTELNUM2}||'-'||#{MTELNUM3},sysdate)
 </insert>
+<!-- <update id="updateMyInofo" parameterType="kr.co.sist.vo.MyInfoVO">
+		update member set
+		m_name=#{m_name}
+		m_email=#{m_email}
+		m_telnum=#{m_telnum}
+		where m_id=#{m_id}
+</update> -->
 </mapper>

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.co.sist.domain.AdminMemberDetail1Domain;
+import kr.co.sist.domain.MyInfoDomain;
 import kr.co.sist.util.cipher.DataEncrypt;
 import kr.co.sist.vo.LoginVO;
 import kr.co.sist.vo.MemberVO;
@@ -79,4 +81,15 @@ public class MemberDAO {
 		}
 		return update;
 	}
+	
+	/*
+	 * public MyInfoDomain selectMyInfo(String m_id) { MyInfoDomain md = null;
+	 * SqlSession ss = MyBatisHandler.getInstance().getHandler();
+	 * 
+	 * md = ss.selectOne("kr.co.sist.adminMemberMapper.selectId", m_id); if (ss !=
+	 * null) { ss.close(); }
+	 * 
+	 * return md; }
+	 */
+	
 }

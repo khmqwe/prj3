@@ -54,17 +54,17 @@ $(function() {
             	});
 			//alert 기능 
             function chkNull(){
-            	if(  $("#inputTel1").val().length >= 4 ){
+            	if(  $("#inputTel1").val().length <= 2 ){
             		alert("연락처를 확인해주세요");
             		$("#inputTel1").focus();
             		return;
             	}//end if
-            	if(  $("#inputTel2").val().length >= 5 ){
+            	if(  $("#inputTel2").val().length <= 3 ){
             		alert("연락처를 확인해주세요");
             		$("#inputTel2").focus();
             		return;
             	}//end if
-            	if(  $("#inputTel3").val().length >= 5 ){
+            	if(  $("#inputTel3").val().length <= 3){
             		alert("연락처를 확인해주세요");
             		$("#inputTel3").focus();
             		return;
@@ -173,19 +173,19 @@ $(function() {
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-floating mb-3">
-										<input class="form-control" id="inputTel1" type="text"	placeholder="tel1" name="MTELNUM1" /> 
+										<input class="form-control" id="inputTel1" type="text"  maxlength="3" 	placeholder="tel1" name="MTELNUM1" /> 
 											<label for="inputTel">tel</label>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-floating mb-3">
-										<input class="form-control" id="inputTel2" type="text"	placeholder="tel2" name="MTELNUM2" /> 
+										<input class="form-control" id="inputTel2" type="text"  maxlength="4" 	placeholder="tel2" name="MTELNUM2" /> 
 										<label for="inputTel"></label>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-floating mb-3">
-										<input class="form-control" id="inputTel3" type="text"	placeholder="tel3" name="MTELNUM3" /> 
+										<input class="form-control" id="inputTel3" type="text"  maxlength="4" 	placeholder="tel3" name="MTELNUM3" /> 
 										<label for="inputTel"></label>
 									</div>
 								</div>

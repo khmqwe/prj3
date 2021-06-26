@@ -54,6 +54,14 @@ public class MemberController {
 	public String idDupForm() {
 		return "user/signUp_idcheck";
 	}
+	
+	
+	 @RequestMapping(value = "/user/modifyPassForm.do", method = { POST, GET  } )
+	  public String modify_pass(MemberVO mVO, Model mode) { 
+		 
+		 return "user/mypage_modify_pass"; 
+	  }
+	 
 
 	@RequestMapping(value = "/user/idDupProcess.do", method = { POST, GET  } )
 	public String idDupProcess(MemberVO mVO, Model model) {
@@ -70,6 +78,7 @@ public class MemberController {
 		return "user/signUp_idcheck";
 	}
 
+	
 	@RequestMapping(value = "/user/joinProcess.do", method = POST)
 	public String joinProcess(MemberVO mVO) {
 		MemberService ms = new MemberService();
@@ -89,6 +98,7 @@ public class MemberController {
 	@RequestMapping(value = "/user/checkPassProcess.do", method = POST)
 	public String checkPassProcess(HttpSession session,LoginVO lVO) {
 		MemberService ms = new MemberService();
+		
 		lVO.setMID((String) session.getAttribute("MID"));
 		String result= ms.passCheck(lVO);
 		if(result.equals("null")) {

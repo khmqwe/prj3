@@ -54,7 +54,7 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="03_travelManage.do">관광관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="10_memberList.do">회원관리</a>
                     <div style = "height : 200px;"></div>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">
                    <span style = "font-size: 12px;">관리자 로그아웃</span></a>
                 </div>
             </div>
