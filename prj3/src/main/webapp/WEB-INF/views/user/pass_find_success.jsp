@@ -42,7 +42,7 @@
 				<h2>
 					<strong>임시 비밀번호는 <c:out value="${ np }"/> 입니다.</strong>
 				</h2>
-				<br> <a id="loginBtn" href="login.jsp" class="btn btn-primary" >확인</a>
+				<br> <a id="loginBtn" href="loginForm.do" class="btn btn-primary" >확인</a>
 				</c:if>
 			</div>
 

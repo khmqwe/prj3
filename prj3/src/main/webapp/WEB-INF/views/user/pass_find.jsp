@@ -25,7 +25,46 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
         
-   
+   		<script type="text/javascript">
+   		
+		$(function() {
+			find_submit
+			 $("#find_submit").click(function(){ 
+         		chkNull();
+         	});	
+			function chkNull(){
+            	if( $("#m_id").val() ==""){
+            		alert("아이디를 입력해주세요");
+            		$("#m_id").focus();
+            		return;
+            	}//end if
+            	if( $("#m_email").val() ==""){
+            		alert("이메일을 입력해주세요");
+            		$("#m_email").focus();
+            		return;
+            	}//end if
+            	if( $("#inputTel1").val() ==""){
+            		alert("연락처를 입력해주세요");
+            		$("#inputTel1").focus();
+            		return;
+            	}//end if
+            	if( $("#inputTel2").val() ==""){
+            		alert("연락처를 입력해주세요");
+            		$("#inputTel2").focus();
+            		return;
+            	}//end if
+            	if( $("#inputTel3").val() ==""){
+            		alert("연락처를 입력해주세요");
+            		$("#inputTel3").focus();
+            		return;
+            	}//end if
+		      	$("#findFrm").submit();
+		   	  }	
+		});//ready
+		
+   	  
+   		
+   		</script>
         
     </head>
     <body id="page-top">
@@ -43,7 +82,7 @@
                                     </div>
                                     <div class="card-body">
                                     
-                                        <form action="pass_find_success.do" method="post">
+                                        <form action="pass_find_success.do" method="post" id="findFrm">
 										<div style="text-align: center;">
 										<h3>등록정보로 비밀번호 찾기</h3>
 										회원가입 시 등록한 정보로 찾을 수 있습니다.
@@ -63,24 +102,24 @@
 										   <div class="row">
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel1" name="inputTel1"type="text" placeholder="tel1" />
+                                                <input class="form-control" id="inputTel1" name="inputTel1"type="text" placeholder="tel1"  maxlength="3"/>
                                                 <label for="inputTel">tel</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel2" name="inputTel2"type="text" placeholder="tel2" />
+                                                <input class="form-control" id="inputTel2" name="inputTel2"type="text" placeholder="tel2" maxlength="4" />
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel3" name="inputTel3"type="text" placeholder="tel3" />
+                                                <input class="form-control" id="inputTel3" name="inputTel3"type="text" placeholder="tel3"  maxlength="4"/>
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
 										</div> 
-                                        <div style="text-align:right;"><input type="submit" class="btn btn-primary btn-lg" value="비밀번호찾기"/></div>
+                                        <div style="text-align:right;"><input type="button" id="find_submit" class="btn btn-primary btn-lg" value="비밀번호찾기"/></div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">

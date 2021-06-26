@@ -26,6 +26,33 @@
         
         <script type="text/javascript">
 		$(function() {
+			find_submit
+			 $("#find_submit").click(function(){ 
+         		chkNull();
+         	});	
+			function chkNull(){
+            	if( $("#m_name").val() ==""){
+            		alert("이름을 입력해주세요");
+            		$("#m_name").focus();
+            		return;
+            	}//end if
+            	if( $("#inputTel1").val() ==""){
+            		alert("연락처를 입력해주세요");
+            		$("#inputTel1").focus();
+            		return;
+            	}//end if
+            	if( $("#inputTel2").val() ==""){
+            		alert("연락처를 입력해주세요");
+            		$("#inputTel2").focus();
+            		return;
+            	}//end if
+            	if( $("#inputTel3").val() ==""){
+            		alert("연락처를 입력해주세요");
+            		$("#inputTel3").focus();
+            		return;
+            	}//end if
+		      	$("#findFrm").submit();
+		   	  }	
 		});//ready
         
         </script>
@@ -44,7 +71,7 @@
 									  <li><a href="pass_find.do"><h3 class="btn btn-default">비밀번호 찾기</h3></a></li>
 									</ol>
                                     </div>
-                                    <form action="id_find_success.do" method="post">
+                                    <form action="id_find_success.do" method="post" id="findFrm">
                                     <div class="card-body">
 										<div style="text-align: center;">
 										<h3>등록정보로 아이디 찾기</h3>
@@ -59,25 +86,25 @@
 										   <div class="row">
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel1" name="inputTel1"type="text" placeholder="tel1" />
+                                                <input class="form-control" id="inputTel1" name="inputTel1"type="text" placeholder="tel1" maxlength="3"/>
                                                 <label for="inputTel">tel</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel2" name="inputTel2"type="text" placeholder="tel2" />
+                                                <input class="form-control" id="inputTel2" name="inputTel2"type="text" placeholder="tel2" maxlength="4" />
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel3" name="inputTel3"type="text" placeholder="tel3" />
+                                                <input class="form-control" id="inputTel3" name="inputTel3"type="text" placeholder="tel3" maxlength="4"/>
                                                 <label for="inputTel">0000</label>
                                             </div> 
 										  </div>
 										</div> 
 										<br>                                                          
-                                       <div style="text-align:right;"><input type="submit" class="btn btn-primary btn-lg" value="아이디 찾기"/></div>
+                                       <div style="text-align:right;"><input type="button" id="find_submit" class="btn btn-primary btn-lg" value="아이디 찾기"/></div>
 										</div>                           
                                     </form>
                                     <div class="card-footer text-center py-3">

@@ -51,13 +51,13 @@
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">아이디/비밀번호를 잊으셨나요?</a>
+                                                <a class="small" href="id_find.do">아이디/비밀번호를 잊으셨나요?</a>
                                                 <input type="button" class="btn btn-primary" value="로그인"  id="login_btn" />
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.html">회원이 아니신가요?</a></div>
+                                        <div class="small"><a href="joinForm.do">회원이 아니신가요?</a></div>
                                     </div>
                                 </div>
                             </div>
