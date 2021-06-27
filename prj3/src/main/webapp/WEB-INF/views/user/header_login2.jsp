@@ -6,7 +6,7 @@
     	 location.href = "http://localhost/prj3/user/loginForm.do";
 	}
 	function joinForm( ){
-    	 location.href = "http://localhost/prj3/user/joinForm.do";
+    	 location.href = "http://localhost/prj3/user/signUpTerm.do";
 	}
 </script>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">

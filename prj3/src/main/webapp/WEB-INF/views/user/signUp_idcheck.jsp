@@ -44,14 +44,44 @@
 </style>
 <script type="text/javascript">
 function useId(){
-    opener.document.getElementById("MID").value = document.getElementById("MID").value;
+	opener.document.getElementById("MID").value = document.getElementById("MID").value;
 	self.close();
+	
+}
+function check(re, what, message) {
+    if(re.test(what.value)) {
+        return true;
+    }
+    alert(message);
+    what.value = "";
+    what.focus();
+    //return false;
+}
+function checkId() {
+	 var re = /^[a-zA-Z0-9]{4,12}$/; // 아이디
+	 const userId = $("#MID").val();
+	 if(!re.test(userId)){
+	  alert("4~12자리 영문대소문자와 숫자로만 입력해주세요");
+	  $("#use").css("display", "none");
+	  return false;
+	 } else {
+		 return true;
+	 }
 }
 $(function() { 
     //버튼 기능
 	 $("#chkid").click(function(){ 
+		if (checkId()) {
 		$("#idfrm").submit();
+		}
 	});		
+    
+	 const result = "${ result }";
+	 if (result == "사용가능한 아이디 입니다.") {
+		 $("#use").css("display", "block");
+	 } else {
+		 $("#use").css("display", "none");
+	 }
     
 });		
 </script>
@@ -66,7 +96,7 @@ $(function() {
 			<c:out value="${result}" />
 			<input type="text" class="inputbox" name="MID" id="MID"  value="<c:out value="${ID}"/>" /> 
 			<input type="button" value="ID 중복확인" class="btn btn-default" id="chkid" /><br />
-			<input type="button" value="사용하기" class="use" id="use"  onclick="useId()" /> 
+			<input style="display: none; margin: auto;" type="button" value="사용하기" class="use" id="use"  onclick="useId()"/>
 		</div>
 	</form>
 

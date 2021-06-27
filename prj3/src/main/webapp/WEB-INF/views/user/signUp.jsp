@@ -32,8 +32,74 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="http://localhost/prj3/common/css/styles.css"
 	rel="stylesheet" />
+
+<style type="text/css">
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+	}
+
+	/* Firefox */
+	input[type=number] {
+	  -moz-appearance: textfield;
+	}
+</style>
 <script type="text/javascript">
+function chkPW(){
+	 var pw = $("#inputPassword").val();
+	 var num = pw.search(/[0-9]/g);
+	 var eng = pw.search(/[a-z]/ig);
+	 var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+	
+	 if(pw.length < 8 || pw.length > 20){
+	  alert("비밀번호를 8자리 ~ 20자리 이내로 입력해주세요.");
+	  $("#inputPassword").focus();
+	  return false;
+	 }else if(pw.search(/\s/) != -1){
+	  alert("비밀번호는 공백 없이 입력해주세요.");
+	  $("#inputPassword").focus();
+	  return false;
+	 }else if(num < 0 || eng < 0){
+	  alert("비밀번호 영문,숫자를 혼합하여 입력해주세요.");
+	  $("#inputPassword").focus();
+	  return false;
+	 }else {
+	    return true;
+	 }
+}
+
+function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+        object.value = object.value.slice(0, object.maxLength);
+    }    
+}
+function checkEmail() {
+	var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/; // 이메일 유효성 검사
+	var email = $("#inputEmail").val();
+	 if(exptext.test(email) == false){
+	  alert("이메일형식이 맞지 않습니다.");
+	  return false;
+	 } else {
+	 	return true;
+	 }
+	
+}
+function checkName() {
+	var nameExp = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; // 이름 유효성 검사
+	var name = $("#inPutName").val();
+	if(nameExp.test(name) == false){
+	  alert("이름형식이 맞지 않습니다.");
+	  return false;
+	 
+	 } else {
+		 return true;
+	 }
+}
+
 $(function() { 
+
            //버튼 기능
 		 $("#idChk").click(function(){ 
 			 window.open("idDupForm.do","id_pop","width=500px,height=300px");
@@ -44,39 +110,21 @@ $(function() {
        		//비밀번호 확인 
 		       	$("#pass_fail").hide();
             	$("#inputPasswordCheck").keyup(function(evt){ 
-            		if( $("#inputPassword").val() == $("#inputPasswordCheck").val()){
-            			$("#pass_success").show();
-            			$("#pass_fail").hide();
-            		}else{
-            			$("#pass_success").hide();
-            			$("#pass_fail").show();
-            		}
+	            		
+           		if( $("#inputPassword").val() == $("#inputPasswordCheck").val()){
+           			$("#pass_success").show();
+           			$("#pass_fail").hide();
+           		}else{
+           			$("#pass_success").hide();
+           			$("#pass_fail").show();
+           		}
+	            		
             	});
 			//alert 기능 
             function chkNull(){
-            	if(  $("#inputTel1").val().length <= 2 ){
-            		alert("연락처를 확인해주세요");
-            		$("#inputTel1").focus();
-            		return;
-            	}//end if
-            	if(  $("#inputTel2").val().length <= 3 ){
-            		alert("연락처를 확인해주세요");
-            		$("#inputTel2").focus();
-            		return;
-            	}//end if
-            	if(  $("#inputTel3").val().length <= 3){
-            		alert("연락처를 확인해주세요");
-            		$("#inputTel3").focus();
-            		return;
-            	}//end if
-            	if(  $("#inputPassword").val() != $("#inputPasswordCheck").val() ){
-            		alert("비밀번호를 확인해주세요");
-            		$("#inputPassword").focus();
-            		return;
-            	}//end if
-				if( $("#id").val() ==""){
+				if( $("#MID").val() == "" || typeof $("#MID").val()=="undefined"){
             		alert("아이디는 필수 입력");
-            		$("#id").focus();
+            		$("#MID").focus();
             		return;
             	}//end if
             	if( $("#inputPassword").val() ==""){
@@ -88,7 +136,7 @@ $(function() {
         			alert("비밀번호는 필수 입력");
         			$("#inputPasswordCheck").focus();
         		return;
-        	}//end if
+        		}//end if
             	if( $("#inPutName").val() ==""){
             		alert("이름은 필수 입력");
             		$("#inPutName").focus();
@@ -114,7 +162,37 @@ $(function() {
             		$("#inputTel3").focus();
             		return;
             	}//end if
-            	$("#signFrm").submit();
+            	if(  $("#inputPassword").val() != $("#inputPasswordCheck").val() ){
+            		alert("비밀번호를 확인해주세요");
+            		$("#inputPassword").focus();
+            		return;
+            	}//end if
+            	if(!checkName()){
+            		$("#inPutName").focus();
+            		return;
+            	}//end if
+            	if(!checkEmail()){
+            		$("#inputEmail").focus();
+            		return;
+            	}//end if
+            	if(  $("#inputTel1").val().length <= 2 ){
+            		alert("연락처를 확인해주세요");
+            		$("#inputTel1").focus();
+            		return;
+            	}//end if
+            	if(  $("#inputTel2").val().length <= 3 ){
+            		alert("연락처를 확인해주세요");
+            		$("#inputTel2").focus();
+            		return;
+            	}//end if
+            	if(  $("#inputTel3").val().length <= 3){
+            		alert("연락처를 확인해주세요");
+            		$("#inputTel3").focus();
+            		return;
+            	}//end if
+            	if (chkPW()) {
+	            	$("#signFrm").submit();
+            	}
             }//chkNull 
            
        });//ready
@@ -136,12 +214,12 @@ $(function() {
 							<div class="row">
 								<div class="col-xs-12 col-md-8">
 									<div class="form-floating mb-3">
-										<input class="form-control" id="MID" type="text" readonly="readonly"	placeholder="id" name="MID" /> 
+										<input class="form-control" id="MID" type="text" readonly="readonly" placeholder="id" name="MID" /> 
 											<label for="inputid">id</label>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-4">
-									<button type="button" class="btn btn-warning" id ="idChk"">중복확인</button>
+									<button type="button" class="btn btn-warning" id ="idChk">중복확인</button>
 								</div>
 							</div>
 							<!-- 비밀번호 입력 -->
@@ -173,19 +251,19 @@ $(function() {
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-floating mb-3">
-										<input class="form-control" id="inputTel1" type="text"  maxlength="3" 	placeholder="tel1" name="MTELNUM1" /> 
+										<input class="form-control" id="inputTel1" type="number" maxlength="3" placeholder="tel1" name="MTELNUM1" oninput="maxLengthCheck(this)" /> 
 											<label for="inputTel">tel</label>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-floating mb-3">
-										<input class="form-control" id="inputTel2" type="text"  maxlength="4" 	placeholder="tel2" name="MTELNUM2" /> 
+										<input class="form-control" id="inputTel2" type="number"  maxlength="4" placeholder="tel2" name="MTELNUM2" oninput="maxLengthCheck(this)" /> 
 										<label for="inputTel"></label>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-floating mb-3">
-										<input class="form-control" id="inputTel3" type="text"  maxlength="4" 	placeholder="tel3" name="MTELNUM3" /> 
+										<input class="form-control" id="inputTel3" type="number"  maxlength="4" placeholder="tel3" name="MTELNUM3" oninput="maxLengthCheck(this)" /> 
 										<label for="inputTel"></label>
 									</div>
 								</div>

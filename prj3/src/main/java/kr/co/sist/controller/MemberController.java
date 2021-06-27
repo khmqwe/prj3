@@ -59,6 +59,10 @@ public class MemberController {
 	public String idDupForm() {
 		return "user/signUp_idcheck";
 	}
+	@RequestMapping(value = "/user/signUpTerm.do")
+	public String signTermForm() {
+		return "user/signUpTerm";
+	}
 	
 	
 	 @RequestMapping(value = "/user/modifyPassForm.do", method = { POST, GET  } )

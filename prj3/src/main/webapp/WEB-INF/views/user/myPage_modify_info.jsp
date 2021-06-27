@@ -25,10 +25,37 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="http://localhost/prj3/common/css/styles.css" rel="stylesheet"/>
         
-                <script type="text/javascript">
+<style type="text/css">
+/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+	}
+
+	/* Firefox */
+	input[type=number] {
+	  -moz-appearance: textfield;
+	}
+</style>
+        
+<script type="text/javascript">
+
+function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+        object.value = object.value.slice(0, object.maxLength);
+    }    
+}
 
         $(function() { 
         	$("#changebtn").click(function() {
+        		if (!checkEmail()) {
+        			return;
+        		}
+        		if (!checkName()) {
+        			return;
+        		}
+        		
         		const tel1 = $("#inputTel1").val();
         		const tel2 = $("#inputTel2").val();
         		const tel3 = $("#inputTel3").val();
@@ -44,8 +71,33 @@
 				location.replace=history.go(-1);
         	});
        });//ready
+     
+ function checkEmail() {
+	var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/; // 이메일 유효성 검사
+	var email = $("#inputEmail").val();
+	 if(exptext.test(email) == false){
+	  alert("이메일형식이 맞지 않습니다.");
+	  $("#inputEmail").focus();
+	  return false;
+	 } else {
+	 	return true;
+	 }
+	
+}
        
-        </script>
+function checkName() {
+	var nameExp = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; // 이름 유효성 검사
+	var name = $("#inPutName").val();
+	if(nameExp.test(name) == false){
+	  alert("이름형식이 맞지 않습니다.");
+	  $("#inPutName").focus();
+	  return false;
+	 
+	 } else {
+		 return true;
+	 }
+}
+</script>
         
         
         
@@ -89,19 +141,19 @@
 										  <div class="col-md-4">
 											<div class="form-group mb-3">
                                                 <label for="inputTel">tel</label>
-                                                <input class="form-control" id="inputTel1" type="text" placeholder="" value="${telArr[0]}"/>
+                                                <input class="form-control" id="inputTel1" type="number" maxlength="3" placeholder="" value="${telArr[0]}" oninput="maxLengthCheck(this)"/>
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-group mb-3">
                                                 <label for="inputTel">　</label>
-                                                <input class="form-control" id="inputTel2" type="text" placeholder="" value="${telArr[1]}" />
+                                                <input class="form-control" id="inputTel2" type="number" maxlength="4" placeholder="" value="${telArr[1]}" oninput="maxLengthCheck(this)" />
                                             </div> 
 										  </div>
 										  <div class="col-md-4">
 											<div class="form-group mb-3">
                                                 <label for="inputTel">　</label>
-                                                <input class="form-control" id="inputTel3" type="text" placeholder="" value="${telArr[2]}"/>
+                                                <input class="form-control" id="inputTel3" type="number" maxlength="4" placeholder="" value="${telArr[2]}" oninput="maxLengthCheck(this)"/>
                                             </div> 
 										  </div>
 										</div>
