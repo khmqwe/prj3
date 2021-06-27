@@ -42,14 +42,6 @@
 
 <script type="text/javascript">
 
-function isRemove() {
-	if (confirm("정말 삭제하시겠습니까?")) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
 </script>
 
 </head>
@@ -65,7 +57,7 @@ function isRemove() {
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="03_travelManage.do">관광관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="10_memberList.do">회원관리</a>
                     <div style = "height : 200px;"></div>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">
                     <span style = "font-size: 12px;">관리자 로그아웃</span></a>
                 </div>
             </div>
@@ -92,7 +84,7 @@ function isRemove() {
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary" style = "font-size: 15px; float : left"><c:out value="${ icd.m_name }"/> &nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${ icd.r_date }"/></h6>
                    
-                   <a href="http://localhost/prj3/admin/06_reviewManage_remove.do?r_num=${ icd.r_num }&tr_num=${ param.tr_num }" onclick= "isRemove()">
+                   <a href="http://localhost/prj3/admin/06_reviewManage_remove.do?r_num=${ icd.r_num }&tr_num=${ param.tr_num }" onclick= "return confirm('정말 삭제하시겠습니까?');">
                    <input type = "button" class = "btn btn-primary" class="removeBtn" value = "삭제" style = "font-size: 13px; height : 24px; float : right;"/>
                    </a>
                 </div>

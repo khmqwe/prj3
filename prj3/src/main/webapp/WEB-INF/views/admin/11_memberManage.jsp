@@ -39,13 +39,18 @@
 
 <script type="text/javascript">
 
-function isRemove() {
-	if (confirm("정말 삭제하시겠습니까?")) {
-		return true;
-	} else {
-		return false;
-	}
-}
+$(function() {
+	
+	$("#insert").click(function() {
+		if (confirm("정말 삭제하시겠습니까?")) {
+			$("#pFrm").submit();
+		} else {
+			return;
+		}
+	});
+	
+});
+
 
 </script>
 </head>
@@ -61,7 +66,7 @@ function isRemove() {
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="03_travelManage.do">관광관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="10_memberList.do">회원관리</a>
                     <div style = "height : 200px;"></div>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">
                     <span style = "font-size: 12px;">관리자 로그아웃</span></a>
                 </div>
             </div>
@@ -71,10 +76,10 @@ function isRemove() {
 	</div>
 	
 	<div class = "right_bar">
-		<form action="" method="post" id="pFrm" > 
+		<form action="http://localhost/prj3/admin/11_memberManage_remove.do" method="post" id="pFrm" > 
 		<div><h1 style= "font-weight: bold; margin-left: 20px; color: #000000; font-size: 30px; margin-top: 10px;">
 		회원 관리</h1></div>
-		
+		<input type="hidden" name="m_id" value="${ amdd.m_id }"/>
 		
 	<div id = "contents_11" style="height:100%;">
 		<div style = "height : 20px;"></div>
@@ -129,9 +134,9 @@ function isRemove() {
 			<br/><br/>
 		
 		<div id="buttons" style="margin-right: 50px;">
-			<a href = "http://localhost/prj3/admin/11_memberManage_remove.do?m_id=${ amdd.m_id }" onclick="isRemove()">
+			
 			<input type = "button" id="insert" name="insert" class = "btn btn-primary" value = "삭제" 
-			style="width:80px;height:40px; font-weight:bold; font-size: 15px; margin-right: 10px;"></a>
+			style="width:80px;height:40px; font-weight:bold; font-size: 15px; margin-right: 10px;">
 			<a href = "http://localhost/prj3/admin/10_memberList.do"><input type = "button" class = "btn btn-default" value = "취소"  
 			style = "border: 0.5px solid #dfdfdf; font-size: 15px;"></a>
 		</div><br/>
