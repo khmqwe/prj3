@@ -50,7 +50,7 @@ function chkNull() {
 		$("#ad_pass").focus();
 		return;
 	}
-	$("#btnLogin").submit();
+	$("#adFrm").submit();
 }
 
 </script>
