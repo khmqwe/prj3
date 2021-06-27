@@ -30,8 +30,22 @@
     $(function() {
 		$("#login_btn").click(function() {
 			$("#loginFrm").submit();
+			chkNull();
 		});
 	});//ready
+	function chkNull() {
+		if ($("#inputEmail").val() == "") {
+			alert("아이디를 입력해주세요.");
+			$("#inputEmail").focus();
+			return;
+		}
+		if ($("#inputPassword").val() == "") {
+			alert("비밀번호를 입력해주세요.");
+			$("#inputPassword").focus();
+			return;
+		}
+		$("#login_btn").submit();
+	}
     </script>
 <jsp:include page="header.jsp"/>  
 <div class="main-content">

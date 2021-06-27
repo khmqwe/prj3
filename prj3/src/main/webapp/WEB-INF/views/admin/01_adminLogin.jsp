@@ -40,17 +40,17 @@ $(function(){
 });//ready
 
 function chkNull() {
-	if ($("#id").val() == "") {
+	if ($("#ad_id").val() == "") {
 		alert("아이디를 입력해주세요.");
-		$("#id").focus();
+		$("#ad_id").focus();
 		return;
 	}
-	if ($("#password").val() == "") {
+	if ($("#ad_pass").val() == "") {
 		alert("비밀번호를 입력해주세요.");
-		$("#password").focus();
+		$("#ad_pass").focus();
 		return;
 	}
-	$("#adFrm").submit();
+	$("#btnLogin").submit();
 }
 
 </script>
